@@ -17,8 +17,20 @@ module Soca
       @config = JSON.parse(File.read(config_path))
     end
     
+    def bundle_js
+      jimfile = File.join(app_dir, 'Jimfile')
+      if File.readable?(jimfile)
+        Dir.chdir app_dir do
+          Jim.logger = Soca.logger
+          bundler = Jim::Bundler.new(File.read(jimfile), Jim::Index.new(app_dir))
+          bundler.bundle!
+        end
+      end
+    end
+    
     def build
       final_hash = {}
+      bundle_js
       Dir.glob(app_dir + '**/**') do |path|
         next if File.directory?(path)
         final_hash = map_file(path, final_hash)

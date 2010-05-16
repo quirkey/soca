@@ -4,7 +4,7 @@ class TestSocaPush < Test::Unit::TestCase
   
   context "Soca::Push" do
     setup do
-      @test_app_dir = File.join(File.dirname(__FILE__), 'testapp')
+      @test_app_dir = File.expand_path(File.join(File.dirname(__FILE__), 'testapp')) + '/'
       @push = Soca::Push.new(@test_app_dir)
     end
     
@@ -31,6 +31,10 @@ class TestSocaPush < Test::Unit::TestCase
       
       should "build Jimfile" do
         assert_match(/jQuery/, @app_file['_attachments']['js']['bundled.js'])
+      end
+      
+      should "ignore files mapped to false or null" do
+        
       end
             
       should "map the directories to the correct paths in the JSON" do
