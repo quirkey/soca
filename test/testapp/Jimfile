@@ -1,0 +1,11 @@
+// bundled_path: js/bundled.js
+// compressed_path: js/compressed.js
+// vendor_dir: js/vendor
+
+/ start adding your requirements below:
+
+json2
+jquery 1.4.2
+sammy 0.5.4
+sammy.mustache 0.5.4
+js/app
