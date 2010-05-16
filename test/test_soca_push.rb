@@ -34,7 +34,7 @@ class TestSocaPush < Test::Unit::TestCase
       end
       
       should "ignore files mapped to false or null" do
-        
+        assert !@app_file['Jimfile']
       end
             
       should "map the directories to the correct paths in the JSON" do
