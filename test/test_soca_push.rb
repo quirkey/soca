@@ -43,7 +43,20 @@ class TestSocaPush < Test::Unit::TestCase
       end      
     end
     
+    context "push_url" do
+      should "construct push URL from id and couchapprc" do
+        assert_equal 'http://admin:admin@localhost:5984/testapp/_design/testapp', @push.push_url
+      end
+      
+      should "construct url for different envs" do
+        assert_equal 'http://admin:admin@c.ixxr.net/testapp/_design/testapp', @push.push_url("production")
+      end      
+    end
+    
     context "push" do
+      should "push the app to the push url" do
+        
+      end
     end
     
   end

@@ -1,0 +1,10 @@
+{
+  "env": { 
+    "default": {
+      "db": "http://admin:admin@localhost:5984/testapp"
+    },
+    "production": {
+      "db": "http://admin:admin@c.ixxr.net/testapp"
+    }
+  }
+}

@@ -1,4 +1,5 @@
 {
+  "id": "testapp",
   "mapDirectories": {
     "css": "_attachments/css",
     "js": "_attachments/js",

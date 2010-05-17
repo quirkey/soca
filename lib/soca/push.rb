@@ -7,6 +7,7 @@ module Soca
       self.app_dir     = File.expand_path(app_dir) + '/'
       self.config_path = config_path
       load_config
+      load_couchapprc
     end
     
     def config_path=(config_path)
@@ -15,6 +16,11 @@ module Soca
     
     def load_config
       @config = JSON.parse(File.read(config_path))
+    end
+    
+    def load_couchapprc
+      @config ||= {}
+      @config['couchapprc'] = JSON.parse(File.read(File.join(app_dir, '.couchapprc')))
     end
     
     def bundle_js
@@ -36,6 +42,12 @@ module Soca
         final_hash = map_file(path, final_hash)
       end
       final_hash
+    end
+    
+    def push_url(env = 'default')
+      env = config['couchapprc']['env'][env]
+      raise "No such env: #{env}" unless env && env['db']
+      "#{env['db']}/_design/#{config['id']}"
     end
     
     private
@@ -69,6 +81,6 @@ module Soca
       config['mapDirectories'].collect {|k,v| map[/^#{k}/] = v }
       @mapped_directories = map
     end
-    
+      
   end
 end
