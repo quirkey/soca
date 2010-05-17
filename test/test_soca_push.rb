@@ -64,9 +64,15 @@ class TestSocaPush < Test::Unit::TestCase
     end
 
     context "push" do
-      should "push the app to the push url" do
-
+      setup do
+        @push.push!
       end
+      
+      before_should "create the db" do
+        response = Typhoeus::Response.new(:code => 201, :headers => "", :body => '{"ok":"true"}', :time => 0.3)
+        Typhoeus::Request.expects(:put).twice.returns(response)
+      end
+      
     end
 
   end

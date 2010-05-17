@@ -26,6 +26,7 @@ module Soca
     def bundle_js
       jimfile = File.join(app_dir, 'Jimfile')
       if File.readable?(jimfile)
+        logger.debug "bundling js"
         Dir.chdir app_dir do
           Jim.logger = Soca.logger
           bundler = Jim::Bundler.new(File.read(jimfile), Jim::Index.new(app_dir))
@@ -37,6 +38,7 @@ module Soca
     def build
       final_hash = {}
       bundle_js
+      logger.debug "building app JSON"
       Dir.glob(app_dir + '**/**') do |path|
         next if File.directory?(path)
         final_hash = map_file(path, final_hash)
@@ -56,12 +58,14 @@ module Soca
     end
 
     def create_db!(env = 'default')
+      logger.debug "creating db: #{db_url(env)}"
       put!(db_url(env))
     end
 
     def push!(env = 'default')
       post_body = JSON.generate(build)
       create_db!(env)
+      logger.debug "pushing document to #{push_url(env)}"
       put!(push_url(env), post_body)
     end
 
@@ -113,9 +117,10 @@ module Soca
     end
 
     def put!(url, body = '')
+      logger.debug "PUT #{url}"
+      logger.debug "body: #{body[0..80]} ..."
       response = Typhoeus::Request.put(url, :body => body)
-      puts response.code.inspect
-      puts response.body.inspect
+      logger.debug "Response: #{response.code} #{response.body}"
       response
     end
 
