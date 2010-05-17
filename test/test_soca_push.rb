@@ -30,7 +30,13 @@ class TestSocaPush < Test::Unit::TestCase
       end
 
       should "build Jimfile" do
-        assert_match(/jQuery/, @app_file['_attachments']['js']['bundled.js'])
+        assert @app_file['_attachments']['js/bundled.js']
+      end
+
+      should "encode attachments" do
+        assert @app_file['_attachments']['templates/index.mustache']
+        assert 'text/plain', @app_file['_attachments']['templates/index.mustache']['content_type']
+        assert @app_file['_attachments']['templates/index.mustache']['data']
       end
 
       should "ignore files mapped to false or null" do
@@ -43,7 +49,7 @@ class TestSocaPush < Test::Unit::TestCase
 
       should "map the directories to the correct paths in the JSON" do
         assert_match(/function/, @app_file['views']['recent']['map.js'])
-        assert_match(/body/, @app_file['_attachments']['css']['app.css'])
+        assert @app_file['_attachments']['css/app.css']
       end
     end
 
