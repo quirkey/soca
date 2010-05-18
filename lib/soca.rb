@@ -24,3 +24,4 @@ module Soca
 end
 
 require 'soca/push'
+require 'soca/cli'

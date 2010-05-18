@@ -60,7 +60,7 @@ module Soca
       put!(db_url)
     end
 
-    def push!
+    def push!(env = 'default')
       post_body = JSON.generate(build)
       create_db!
       put!(push_url, post_body)
