@@ -1,6 +1,6 @@
 module Soca
   class Push
-    attr_accessor :app_dir, :env, :config_path
+    attr_accessor :app_dir, :env, :document, :config_path
     attr_reader :config
 
     def initialize(app_dir, env = 'default', config_path = nil)
@@ -25,14 +25,15 @@ module Soca
     end
 
     def build
-      final_hash = {}
+      @document = {}
       run_hook_file!(:before_build)
       logger.debug "building app JSON"
       Dir.glob(app_dir + '**/**') do |path|
         next if File.directory?(path)
-        final_hash = map_file(path, final_hash)
+        @document = map_file(path, @document)
       end
-      final_hash
+      run_hook_file!(:after_build)
+      @document
     end
 
     def db_url
@@ -52,10 +53,12 @@ module Soca
     end
 
     def push!
+      run_hook_file!(:before_push)
       post_body = JSON.generate(build)
       logger.debug "pushing document to #{push_url}"
       create_db!
       put!(push_url, post_body)
+      run_hook_file!(:after_push)
     end
     
     def logger
