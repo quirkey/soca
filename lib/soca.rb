@@ -3,6 +3,7 @@ require 'jim'
 require 'typhoeus'
 require 'base64'
 require 'mime/types'
+require 'logger'
 
 module Soca
   VERSION = '0.0.1'

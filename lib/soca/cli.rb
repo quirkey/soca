@@ -6,7 +6,6 @@ module Soca
       self.args = args
       parse_options(args)
       self.appdir ||= File.expand_path(Dir.pwd)
-      puts self.inspect
     end
     
     # method called by the bin directly after initialization. 
@@ -46,7 +45,7 @@ module Soca
          opts.separator ""
          opts.separator "soca options:"
 
-         opts.on("--appdir=[appdir]", "set the appdir to work with. assumes the current directory") {|d|
+         opts.on("--appdir [appdir]", "set the appdir to work with. assumes the current directory") {|d|
            self.appdir = d
          }
          

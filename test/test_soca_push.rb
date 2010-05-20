@@ -4,7 +4,6 @@ class TestSocaPush < Test::Unit::TestCase
 
   context "Soca::Push" do
     setup do
-      @test_app_dir = File.expand_path(File.join(File.dirname(__FILE__), 'testapp')) + '/'
       @push = Soca::Push.new(@test_app_dir)
     end
 
@@ -70,7 +69,7 @@ class TestSocaPush < Test::Unit::TestCase
       end
       
       before_should "create the db" do
-        response = Typhoeus::Response.new(:code => 201, :headers => "", :body => '{"ok":"true"}', :time => 0.3)
+        response = Typhoeus::Response.new(:code => 201, :headers => "", :body => '{"ok":"true"}')
         Typhoeus::Request.expects(:put).twice.returns(response)
       end
       
