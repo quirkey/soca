@@ -46,6 +46,10 @@ module Soca
       raise "no app id specified in config" unless config['id']
       "#{db_url}/_design/#{config['id']}"
     end
+    
+    def app_url
+      "#{push_url}/index.html"
+    end
 
     def create_db!
       logger.debug "creating db: #{db_url}"

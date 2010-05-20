@@ -28,9 +28,20 @@ module Soca
       
     end
     
+    def init
+      
+    end
+    
+    def url(env = 'default')
+      puts pusher(env).app_url
+    end
+    
+    def open(env = 'default')
+      `open #{pusher(env).app_url}`
+    end
+    
     def push(env = 'default')
-      pusher = Soca::Push.new(appdir, env, config_file)
-      pusher.push!
+      pusher(env).push!
     end
     
     def logger
@@ -38,6 +49,10 @@ module Soca
     end
     
     private
+    def pusher(env)
+      Soca::Push.new(appdir, env, config_file)
+    end
+    
      def parse_options(runtime_args)
        OptionParser.new("", 24, '  ') do |opts|
          opts.banner = "Usage: soca [options] [command] [args]"

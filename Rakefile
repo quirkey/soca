@@ -1,12 +1,13 @@
-require 'rubygems'
-require 'rake'
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
+require 'lib/soca'
 
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "soca"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.version = Soca::VERSION
+    gem.summary = %Q{Sammy on CouchApp}
+    gem.description = %Q{soca is a different way of writing apps for couchdb. The structure is up to you.}
     gem.email = "aaron@quirkey.com"
     gem.homepage = "http://github.com/quirkey/soca"
     gem.authors = ["Aaron Quint"]
