@@ -59,7 +59,8 @@ class TestSocaPush < Test::Unit::TestCase
       end
 
       should "construct url for different envs" do
-        assert_equal 'http://admin:admin@c.ixxr.net/testapp/_design/testapp', @push.push_url("production")
+        @push.env = 'production'
+        assert_equal 'http://admin:admin@c.ixxr.net/testapp/_design/testapp', @push.push_url
       end
     end
 
