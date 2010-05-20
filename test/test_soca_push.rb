@@ -28,8 +28,8 @@ class TestSocaPush < Test::Unit::TestCase
         assert @app_file.is_a?(Hash)
       end
 
-      should "build Jimfile" do
-        assert @app_file['_attachments']['js/bundled.js']
+      should "run before build scripts" do
+        assert @app_file['_attachments']['js/bundled.js'], "bundled the js"
       end
 
       should "encode attachments" do

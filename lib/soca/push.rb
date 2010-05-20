@@ -24,21 +24,9 @@ module Soca
       @config['couchapprc'] = JSON.parse(File.read(File.join(app_dir, '.couchapprc')))
     end
 
-    def bundle_js
-      jimfile = File.join(app_dir, 'Jimfile')
-      if File.readable?(jimfile)
-        logger.debug "bundling js"
-        Dir.chdir app_dir do
-          Jim.logger = Soca.logger
-          bundler = Jim::Bundler.new(File.read(jimfile), Jim::Index.new(app_dir))
-          bundler.bundle!
-        end
-      end
-    end
-
     def build
       final_hash = {}
-      bundle_js
+      run_hook_file!(:before_build)
       logger.debug "building app JSON"
       Dir.glob(app_dir + '**/**') do |path|
         next if File.directory?(path)
@@ -72,6 +60,17 @@ module Soca
     
     def logger
       Soca.logger
+    end
+    
+    def run_hook_file!(hook)
+      hook_file_path = File.join(app_dir, 'hooks', "#{hook}.rb")
+      if File.readable? hook_file_path
+        logger.debug "running hook: #{hook} (#{hook_file_path})"
+        Dir.chdir(app_dir) do
+          instance_eval(File.read(hook_file_path))
+        end
+        logger.debug "finished hook: #{hook} (#{hook_file_path})"
+      end
     end
 
     private
