@@ -44,6 +44,30 @@ module Soca
       pusher(env).push!
     end
     
+    def autopush(env = 'default')
+      push = pusher(env)
+      files = {}
+      loop do
+        changed = false
+        Dir.glob(push.app_dir + '**/**') do |file|
+          ctime = File.ctime(file).to_i
+          if ctime != files[file]
+            files[file] = ctime
+            changed = true
+            break
+          end
+        end
+
+        if changed
+          puts "Running #{push} at #{Time.now}"
+          push.push!
+          puts "\nWaiting for a file change"
+        end
+
+        sleep 1
+      end
+    end
+    
     def logger
       Soca.logger
     end
