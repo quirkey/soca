@@ -1,6 +1,6 @@
 module Soca
   class Push
-    attr_accessor :app_dir, :env, :document, :config_path
+    attr_accessor :app_dir, :env, :document, :config_path, :revision
     attr_reader :config
 
     def initialize(app_dir, env = 'default', config_path = nil)
@@ -44,7 +44,9 @@ module Soca
 
     def push_url
       raise "no app id specified in config" unless config['id']
-      "#{db_url}/_design/#{config['id']}"
+      u = "#{db_url}/_design/#{config['id']}"
+      u << "?rev=#{revision}" if revision
+      u
     end
     
     def app_url
@@ -56,11 +58,22 @@ module Soca
       put!(db_url)
     end
 
+    def get_current_revision
+      logger.debug "getting current revision"
+      current = get!(push_url)
+      if current
+        current_json = JSON.parse(current)
+        self.revision = current_json['_rev']
+        logger.debug "current revision: #{revision}"
+      end
+    end
+
     def push!
       run_hook_file!(:before_push)
       post_body = JSON.generate(build)
       logger.debug "pushing document to #{push_url}"
       create_db!
+      get_current_revision
       put!(push_url, post_body)
       run_hook_file!(:after_push)
     end
@@ -95,7 +108,7 @@ module Soca
         hash['_attachments'] ||= {}
         hash['_attachments'][base_path.gsub(/_attachments\//, '')] = make_attachment(path, file_data)
       else
-        parts = base_path.gsub(/^\//, '').split('/')
+        parts = base_path.gsub(/^\//, '').gsub(/\.js$/, '').split('/')
         current_hash = hash
         while !parts.empty?
           part = parts.shift
@@ -133,6 +146,13 @@ module Soca
       response = Typhoeus::Request.put(url, :body => body)
       logger.debug "Response: #{response.code} #{response.body[0..200]}"
       response
+    end
+    
+    def get!(url)
+      logger.debug "GET #{url}"
+      response = Typhoeus::Request.get(url)
+      logger.debug "Response: #{response.code} #{response.body[0..200]}"
+      response.code == 200 ? response.body : nil
     end
 
   end

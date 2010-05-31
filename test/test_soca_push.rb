@@ -64,13 +64,12 @@ class TestSocaPush < Test::Unit::TestCase
     end
 
     context "push" do
-      setup do
+      should "create the db and push" do
+        put_response = Typhoeus::Response.new(:code => 201, :headers => "", :body => '{"ok":"true"}')
+        Typhoeus::Request.expects(:put).twice.returns(put_response)
+        get_response = Typhoeus::Response.new(:code => 200, :headers => "", :body => '{"_id":"_design/test_app", "_rev": "2"}')
+        Typhoeus::Request.expects(:get).returns(get_response)
         @push.push!
-      end
-      
-      before_should "create the db" do
-        response = Typhoeus::Response.new(:code => 201, :headers => "", :body => '{"ok":"true"}')
-        Typhoeus::Request.expects(:put).twice.returns(response)
       end
       
     end

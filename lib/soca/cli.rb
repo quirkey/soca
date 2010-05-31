@@ -44,6 +44,10 @@ module Soca
       pusher(env).push!
     end
     
+    def build(env = 'default')
+      puts pusher(env).build
+    end
+    
     def autopush(env = 'default')
       push = pusher(env)
       files = {}
