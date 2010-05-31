@@ -47,7 +47,7 @@ class TestSocaPush < Test::Unit::TestCase
       end
 
       should "map the directories to the correct paths in the JSON" do
-        assert_match(/function/, @app_file['views']['recent']['map.js'])
+        assert_match(/function/, @app_file['views']['recent']['map'])
         assert @app_file['_attachments']['css/app.css']
       end
     end

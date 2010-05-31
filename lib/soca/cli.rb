@@ -45,7 +45,8 @@ module Soca
     end
     
     def build(env = 'default')
-      puts pusher(env).build
+      require 'pp'
+      pp pusher(env).build
     end
     
     def autopush(env = 'default')

@@ -44,9 +44,7 @@ module Soca
 
     def push_url
       raise "no app id specified in config" unless config['id']
-      u = "#{db_url}/_design/#{config['id']}"
-      u << "?rev=#{revision}" if revision
-      u
+      "#{db_url}/_design/#{config['id']}"
     end
     
     def app_url
@@ -69,11 +67,13 @@ module Soca
     end
 
     def push!
-      run_hook_file!(:before_push)
-      post_body = JSON.generate(build)
-      logger.debug "pushing document to #{push_url}"
       create_db!
+      build
+      run_hook_file!(:before_push)
       get_current_revision
+      document['_rev'] = revision if revision
+      post_body = JSON.generate(document)
+      logger.debug "pushing document to #{push_url}"
       put!(push_url, post_body)
       run_hook_file!(:after_push)
     end
@@ -129,7 +129,7 @@ module Soca
       content_type = type ? type.content_type : 'text/plain'
       {
         'content_type' => content_type,
-        'data' => Base64.encode64(data)
+        'data' => Base64.encode64(data).gsub(/[\s\n\r]*/m,'')
       }
     end
 
