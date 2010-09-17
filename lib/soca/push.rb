@@ -36,6 +36,10 @@ module Soca
       @document
     end
 
+    def json
+      JSON.generate(build)
+    end
+
     def db_url
       env_config = config['couchapprc']['env'][env]
       raise "No such env: #{env}" unless env_config && env_config['db']
@@ -46,7 +50,7 @@ module Soca
       raise "no app id specified in config" unless config['id']
       "#{db_url}/_design/#{config['id']}"
     end
-    
+
     def app_url
       "#{push_url}/index.html"
     end
@@ -77,11 +81,16 @@ module Soca
       put!(push_url, post_body)
       run_hook_file!(:after_push)
     end
-    
+
+    def compact
+      logger.debug "compacting #{db_url}"
+      post!("#{db_url}/_compact")
+    end
+
     def logger
       Soca.logger
     end
-    
+
     def run_hook_file!(hook)
       hook_file_path = File.join(app_dir, 'hooks', "#{hook}.rb")
       if File.readable? hook_file_path
@@ -147,12 +156,20 @@ module Soca
       logger.debug "Response: #{response.code} #{response.body[0..200]}"
       response
     end
-    
+
     def get!(url)
       logger.debug "GET #{url}"
       response = Typhoeus::Request.get(url)
       logger.debug "Response: #{response.code} #{response.body[0..200]}"
       response.code == 200 ? response.body : nil
+    end
+
+    def post!(url, body = '')
+      logger.debug "POST #{url}"
+      logger.debug "body: #{body[0..80]} ..."
+      response = Typhoeus::Request.post(url, :body => body, :headers => {'Content-type' => 'application/json'})
+      logger.debug "Response: #{response.code} #{response.body[0..200]}"
+      response
     end
 
   end
