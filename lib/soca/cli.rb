@@ -6,7 +6,8 @@ module Soca
     include Thor::Actions
 
     attr_accessor :app_dir,
-                  :config_file
+                  :config_file,
+                  :debug
 
     class_option "appdir",
           :type => :string,
@@ -30,41 +31,55 @@ module Soca
     def initialize
       self.appdir      = options[:appdir] || File.expand_path(Dir.pwd)
       self.config_file = options[:config]
+      self.debug       = options[:debug]
+      if options[:debug]
+        logger.level = Logger::DEBUG
+        options[:quiet] = false
+      end
     end
 
+    desc 'init', 'turns any directory into a soca app, generating a config.js'
     def init
 
     end
 
-    def generate
+    desc 'generate [APPDIR]', 'generates the basic soca app structure'
+    def generate(appdir = nil)
 
     end
 
+    desc 'url [ENV]', 'outputs the app url for the ENV'
     def url(env = 'default')
-      puts pusher(env).app_url
+      say pusher(env).app_url
     end
 
+    desc 'open [ENV]', 'attempts to open the url for the current app in a browser'
     def open(env = 'default')
       `open #{pusher(env).app_url}`
     end
 
+    desc 'push [ENV]', 'builds and pushes the current app to couchdb'
     def push(env = 'default')
       pusher(env).push!
     end
 
+    desc 'build [ENV]', 'builds the app as a ruby hash and outputs it to stdout'
     def build(env = 'default')
       require 'pp'
       pp pusher(env).build
     end
 
+    desc 'compact [ENV]', 'runs a DB compact against the couchdb for ENV'
     def compact(env = 'default')
       pusher(env).compact
     end
 
+    desc 'json [ENV]', 'builds and then outputs the design doc JSON for the app'
     def json(env = 'default')
-      puts pusher(env).json
+      say pusher(env).json
     end
 
+    desc 'autopush [ENV]', 'watches the current directory for changes, building and pushing to couchdb'
     def autopush(env = 'default')
       push = pusher(env)
       files = {}
