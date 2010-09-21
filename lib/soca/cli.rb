@@ -1,34 +1,42 @@
+require 'thor'
+require 'thor/actions'
+
 module Soca
-  class CLI
-    attr_accessor :args, :appdir, :config_file
+  class CLI < Thor
+    include Thor::Actions
 
-    def initialize(args)
-      self.args = args
-      parse_options(args)
-      self.appdir ||= File.expand_path(Dir.pwd)
-    end
+    attr_accessor :app_dir,
+                  :config_file
 
-    # method called by the bin directly after initialization.
-    def run
-      command = @args.shift
-      if command && respond_to?(command)
-        self.send(command, *@args)
-      elsif command.nil? || command.strip == ''
-        cheat
-      else
-        logger.error "No action found for #{command}. Run -h for help."
-      end
-    rescue ArgumentError => e
-      logger.error "#{e.message} for #{command}"
-    rescue => e
-      logger.error e.message + " (#{e.class})"
-    end
+    class_option "appdir",
+          :type => :string,
+          :banner => "set the application directory to work with. assumes the current directory"
 
-    def cheat
+    class_option "config",
+        :alias => 'c',
+        :type => :string,
+        :banner => "use a specific soca config.js"
 
+    class_option "debug",
+        :type => :boolean,
+        :default => false,
+        :alias => 'd',
+        :banner => "set log level to debug"
+
+    class_option "version",
+        :alias => 'v',
+        :banner => "print version and exit"
+
+    def initialize
+      self.appdir      = options[:appdir] || File.expand_path(Dir.pwd)
+      self.config_file = options[:config]
     end
 
     def init
+
+    end
+
+    def generate
 
     end
 
@@ -89,54 +97,14 @@ module Soca
       end
     end
 
+    private
     def logger
       Soca.logger
     end
 
-    private
     def pusher(env)
       Soca::Push.new(appdir, env, config_file)
     end
-
-     def parse_options(runtime_args)
-       OptionParser.new("", 24, '  ') do |opts|
-         opts.banner = "Usage: soca [options] [command] [args]"
-
-         opts.separator ""
-         opts.separator "soca options:"
-
-         opts.on("--appdir [appdir]", "set the appdir to work with. assumes the current directory") {|d|
-           self.appdir = d
-         }
-
-         opts.on("-c [config.js]", "use a specific soca config.js") {|c|
-           self.config_file = c
-         }
-
-         opts.on("-d", "--debug", "set log level to debug") {|d|
-           logger.level = Logger::DEBUG
-         }
-
-         opts.on("-o", "--stdout", "write output of commands (like bundle and compress to STDOUT)") {|o|
-           logger.level = Logger::ERROR
-           self.stdout = true
-         }
-
-         opts.on("-v", "--version", "print version") {|d|
-           puts "soca #{Soca::VERSION}"
-           exit
-         }
-
-         opts.on_tail("-h", "--help", "Show this message.") do
-           puts opts.help
-           exit
-         end
-
-       end.parse! runtime_args
-     rescue OptionParser::MissingArgument => e
-       logger.warn "#{e}, run -h for options"
-       exit
-     end
 
   end
 end
