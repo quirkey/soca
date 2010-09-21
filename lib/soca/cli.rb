@@ -2,10 +2,10 @@ require 'thor'
 require 'thor/actions'
 
 module Soca
-  class CLI < Thor
+  class CLI < ::Thor
     include Thor::Actions
 
-    attr_accessor :app_dir,
+    attr_accessor :appdir,
                   :config_file,
                   :debug
 
@@ -28,7 +28,8 @@ module Soca
         :alias => 'v',
         :banner => "print version and exit"
 
-    def initialize
+    def initialize(*)
+      super
       self.appdir      = options[:appdir] || File.expand_path(Dir.pwd)
       self.config_file = options[:config]
       self.debug       = options[:debug]
