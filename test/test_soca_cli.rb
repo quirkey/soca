@@ -11,7 +11,7 @@ class TestSocaCLI < Test::Unit::TestCase
 
       context "with default env" do
         should "push with http put" do
-          Soca::Push.any_instance.expects(:put!).twice
+          Soca::Pusher.any_instance.expects(:put!).twice
           run_cli('push', '--appdir', @test_app_dir)
         end
       end

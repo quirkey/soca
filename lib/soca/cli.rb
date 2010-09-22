@@ -169,7 +169,7 @@ module Soca
     end
 
     def pusher(env)
-      Soca::Push.new(appdir, env, config_file)
+      Soca::Pusher.new(appdir, env, config_file)
     end
 
   end
