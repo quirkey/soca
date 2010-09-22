@@ -25,11 +25,18 @@ module Soca
         :banner => "set log level to debug"
 
     class_option "version",
+        :type => false,
         :alias => 'v',
         :banner => "print version and exit"
 
+    default_task :help
+
     def initialize(*)
       super
+      if options[:version]
+        say "soca #{Soca::VERSION}", :red
+        exit
+      end
       self.appdir      = options[:appdir] || File.expand_path(Dir.pwd)
       self.config_file = options[:config]
       self.debug       = options[:debug]

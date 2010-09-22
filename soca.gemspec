@@ -9,25 +9,36 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
-  s.date = %q{2010-09-17}
+  s.date = %q{2010-09-21}
   s.default_executable = %q{soca}
   s.description = %q{soca is a different way of writing apps for couchdb. The structure is up to you.}
   s.email = %q{aaron@quirkey.com}
   s.executables = ["soca"]
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.rdoc"
+     "README.md"
   ]
   s.files = [
     ".document",
      ".gitignore",
      "LICENSE",
-     "README.rdoc",
      "Rakefile",
      "bin/soca",
      "lib/soca.rb",
      "lib/soca/cli.rb",
      "lib/soca/push.rb",
+     "lib/soca/templates/Jimfile",
+     "lib/soca/templates/config.js.erb",
+     "lib/soca/templates/couchapprc.erb",
+     "lib/soca/templates/css/screen.css",
+     "lib/soca/templates/db/views/by_type/map.js",
+     "lib/soca/templates/hooks/before_build.rb",
+     "lib/soca/templates/index.html.erb",
+     "lib/soca/templates/js/app.js",
+     "lib/soca/templates/js/vendor/jquery-1.4.2.js",
+     "lib/soca/templates/js/vendor/jquery.couch-0.11.js",
+     "lib/soca/templates/js/vendor/sammy-0.6.1.js",
+     "lib/soca/templates/js/vendor/sha1.js",
      "soca.gemspec",
      "test/helper.rb",
      "test/test_soca_cli.rb",
