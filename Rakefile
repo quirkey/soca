@@ -11,6 +11,10 @@ begin
     gem.email = "aaron@quirkey.com"
     gem.homepage = "http://github.com/quirkey/soca"
     gem.authors = ["Aaron Quint"]
+    gem.add_dependency 'json', '~>1.4.6'
+    gem.add_dependency 'typhoeus', '~>0.1.31'
+    gem.add_dependency 'jim', '~>0.2.2'
+    gem.add_dependency 'compass', '~>0.10.5'
     gem.add_development_dependency "shoulda", ">= 0"
     gem.add_development_dependency "yard", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings

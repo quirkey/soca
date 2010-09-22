@@ -1,5 +1,4 @@
 require 'json'
-require 'jim'
 require 'typhoeus'
 require 'base64'
 require 'mime/types'
