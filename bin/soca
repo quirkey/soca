@@ -2,4 +2,4 @@
 
 require 'soca'
 
-Soca::CLI.new(ARGV).run
+Soca::CLI.start

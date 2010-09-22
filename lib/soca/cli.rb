@@ -37,16 +37,37 @@ module Soca
         logger.level = Logger::DEBUG
         options[:quiet] = false
       end
+      self.source_paths << File.expand_path(File.join(File.dirname(__FILE__), 'templates'))
     end
 
-    desc 'init', 'turns any directory into a soca app, generating a config.js'
-    def init
+    method_option "appname",
+          :type => :string,
+          :banner => "set the name of the application for templating. defaults to the basename of the appdir"
 
+    desc 'init [APPDIR]', 'turns any directory into a soca app, generating a config.js'
+    def init(to = nil)
+      self.appdir = to if to
+      self.destination_root = appdir
+      template('config.js.erb', 'config.js')
+      template('couchapprc.erb', '.couchapprc')
     end
+
+    method_option "appname",
+          :type => :string,
+          :banner => "set the name of the application for templating. defaults to the basename of the appdir"
 
     desc 'generate [APPDIR]', 'generates the basic soca app structure'
-    def generate(appdir = nil)
+    def generate(to = nil)
+      self.appdir = to if to
+      self.destination_root = appdir
 
+      directory('hooks')
+      directory('js')
+      directory('css')
+      template('Jimfile')
+      template('index.html.erb', 'index.html.erb')
+      template('config.js.erb', 'config.js')
+      template('couchapprc.erb', '.couchapprc')
     end
 
     desc 'url [ENV]', 'outputs the app url for the ENV'
@@ -66,13 +87,12 @@ module Soca
 
     desc 'build [ENV]', 'builds the app as a ruby hash and outputs it to stdout'
     def build(env = 'default')
-      require 'pp'
-      pp pusher(env).build
+      say pusher(env).build
     end
 
     desc 'compact [ENV]', 'runs a DB compact against the couchdb for ENV'
     def compact(env = 'default')
-      pusher(env).compact
+      pusher(env).compact!
     end
 
     desc 'json [ENV]', 'builds and then outputs the design doc JSON for the app'
@@ -114,6 +134,10 @@ module Soca
     end
 
     private
+    def appname
+      @appname = options[:name] || File.basename(appdir)
+    end
+
     def logger
       Soca.logger
     end

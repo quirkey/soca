@@ -41,9 +41,13 @@ module Soca
     end
 
     def db_url
-      env_config = config['couchapprc']['env'][env]
-      raise "No such env: #{env}" unless env_config && env_config['db']
-      env_config['db']
+      if env =~ /^http\:\/\// # the env is actual a db_url
+        env
+      else
+        env_config = config['couchapprc']['env'][env]
+        raise "No such env: #{env}" unless env_config && env_config['db']
+        env_config['db']
+      end
     end
 
     def push_url
@@ -82,7 +86,7 @@ module Soca
       run_hook_file!(:after_push)
     end
 
-    def compact
+    def compact!
       logger.debug "compacting #{db_url}"
       post!("#{db_url}/_compact")
     end
