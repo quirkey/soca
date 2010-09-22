@@ -106,6 +106,12 @@ module Soca
       end
     end
 
+    def plugin(plugin_name)
+      require "soca/plugins/#{plugin_name}"
+      p = Soca::Plugin.plugins[plugin_name].new(self)
+      p.run
+    end
+
     private
     def map_file(path, hash)
       file_data = File.read(path)

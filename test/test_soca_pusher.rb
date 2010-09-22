@@ -2,9 +2,9 @@ require 'helper'
 
 class TestSocaPusher < Test::Unit::TestCase
 
-  context "Soca::Push" do
+  context "Soca::Pusher" do
     setup do
-      @push = Soca::Push.new(@test_app_dir)
+      @push = Soca::Pusher.new(@test_app_dir)
     end
 
     context "init" do

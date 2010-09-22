@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{soca}
-  s.version = "0.0.1"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
@@ -22,11 +22,14 @@ Gem::Specification.new do |s|
     ".document",
      ".gitignore",
      "LICENSE",
+     "README.md",
      "Rakefile",
      "bin/soca",
      "lib/soca.rb",
      "lib/soca/cli.rb",
-     "lib/soca/push.rb",
+     "lib/soca/plugin.rb",
+     "lib/soca/plugins/jim.rb",
+     "lib/soca/pusher.rb",
      "lib/soca/templates/Jimfile",
      "lib/soca/templates/config.js.erb",
      "lib/soca/templates/couchapprc.erb",
@@ -42,7 +45,7 @@ Gem::Specification.new do |s|
      "soca.gemspec",
      "test/helper.rb",
      "test/test_soca_cli.rb",
-     "test/test_soca_push.rb",
+     "test/test_soca_pusher.rb",
      "test/testapp/.couchapprc",
      "test/testapp/Jimfile",
      "test/testapp/config.js",
@@ -66,7 +69,7 @@ Gem::Specification.new do |s|
   s.test_files = [
     "test/helper.rb",
      "test/test_soca_cli.rb",
-     "test/test_soca_push.rb",
+     "test/test_soca_pusher.rb",
      "test/testapp/hooks/before_build.rb"
   ]
 

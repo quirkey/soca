@@ -5,6 +5,8 @@ require 'base64'
 require 'mime/types'
 require 'logger'
 
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__))))
+
 module Soca
   VERSION = '0.1.0'
 
@@ -24,5 +26,6 @@ module Soca
   end
 end
 
-require 'soca/push'
+require 'soca/pusher'
 require 'soca/cli'
+require 'soca/plugin'
