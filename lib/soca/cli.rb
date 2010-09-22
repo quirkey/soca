@@ -87,7 +87,8 @@ module Soca
 
     desc 'build [ENV]', 'builds the app as a ruby hash and outputs it to stdout'
     def build(env = 'default')
-      say pusher(env).build
+      require 'pp'
+      pp pusher(env).build
     end
 
     desc 'compact [ENV]', 'runs a DB compact against the couchdb for ENV'

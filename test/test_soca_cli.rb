@@ -88,16 +88,13 @@ class TestSocaCLI < Test::Unit::TestCase
 
     context "build" do
       should "output ruby hash" do
-        Soca::Push.any_instance.expects(:build).once
         run_cli("build", "--appdir", @test_app_dir)
-        puts "out #{@stdout}"
         assert_match(/\{/si, @stdout) # needs better test
       end
     end
 
     context "json" do
       should "output json design doc" do
-        Soca::Push.any_instance.expects(:build).once
         run_cli("json", "--appdir", @test_app_dir)
         assert parsed = JSON.parse(@stdout)
         assert parsed['_attachments']
