@@ -1,6 +1,4 @@
 {
-  "id": "<%= appdir %>",
-  "mapDirectories": {
-    "config.js": ""
-  }
+  "id": "<%= appname %>",
+  "mapDirectories": <%= JSON.pretty_generate(@dir_mappings) %>
 }

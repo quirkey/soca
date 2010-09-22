@@ -48,6 +48,11 @@ module Soca
     def init(to = nil)
       self.appdir = to if to
       self.destination_root = appdir
+      @dir_mappings = {}
+      Dir[appdir + '*'].each do |filename|
+        basename = File.basename(filename)
+        @dir_mappings[basename] = "_attachments/#{basename}"
+      end
       template('config.js.erb', 'config.js')
       template('couchapprc.erb', '.couchapprc')
     end
@@ -64,8 +69,21 @@ module Soca
       directory('hooks')
       directory('js')
       directory('css')
+      directory('db')
       template('Jimfile')
       template('index.html.erb', 'index.html.erb')
+      @dir_mappings = {
+        "config.js"  => "",
+        "index.html" => "_attachments/index.html",
+        "css"        => "_attachments/css",
+        "images"     => "_attachments/images",
+        "sass"       => false,
+        "js"         => "_attachments/js",
+        "templates"  => "_attachments/templates",
+        "db"         => "",
+        "Jimfile"    => false,
+        "hooks"      => false
+      }
       template('config.js.erb', 'config.js')
       template('couchapprc.erb', '.couchapprc')
     end
