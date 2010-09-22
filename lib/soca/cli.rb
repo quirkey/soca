@@ -71,7 +71,7 @@ module Soca
       directory('css')
       directory('db')
       template('Jimfile')
-      template('index.html.erb', 'index.html.erb')
+      template('index.html.erb', 'index.html')
       @dir_mappings = {
         "config.js"  => "",
         "index.html" => "_attachments/index.html",

@@ -11,20 +11,11 @@ class TestSocaCLI < Test::Unit::TestCase
 
       context "with default env" do
         should "push with http put" do
-          Typhoeus::Request.expects(:put).twice.returns(@response)
           Soca::Push.any_instance.expects(:put!).twice
           run_cli('push', '--appdir', @test_app_dir)
         end
       end
 
-      context "with an env specified as a url" do
-        should "push with http put" do
-          @db_url = 'http://couchone.com/mydb'
-          Typhoeus::Request.stubs(:put).twice.returns(@response)
-          Soca::Push.any_instance.expects(:put!).with(@db_url)
-          run_cli('push', '--appdir', @test_app_dir, @db_url)
-        end
-      end
     end
 
     context "init" do
