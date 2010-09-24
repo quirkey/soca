@@ -80,8 +80,8 @@ Which will watch the directory and push your changes automagically.
 ## TODO
 
 * Better Docs
-* More plugins (compass, etc)
-* More generate options
+* More plugins
+* More generate options (compass scaffold, etc)
 * More example apps
 
 ## Copyright/License
