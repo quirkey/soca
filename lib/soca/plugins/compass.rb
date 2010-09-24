@@ -12,7 +12,10 @@ module Soca
         Soca.logger.info "compiling compass"
         compass_from = File.join(app_dir, 'sass')
         compass_to   = File.join(app_dir, 'css')
-        compass = Compass::Compiler.new(app_dir, compass_from, compass_to, Compass.sass_engine_options)
+        unless Soca.debug
+          options = {:logger => ::Compass::NullLogger.new}
+        end
+        compass = ::Compass::Compiler.new(app_dir, compass_from, compass_to, ::Compass.sass_engine_options.merge(options || {}))
         compass.run
       end
 

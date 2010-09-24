@@ -14,19 +14,19 @@ module Soca
           :banner => "set the application directory to work with. assumes the current directory"
 
     class_option "config",
-        :alias => 'c',
+        :aliases => '-c',
         :type => :string,
         :banner => "use a specific soca config.js"
 
     class_option "debug",
         :type => :boolean,
         :default => false,
-        :alias => 'd',
+        :aliases => '-d',
         :banner => "set log level to debug"
 
     class_option "version",
-        :type => false,
-        :alias => 'v',
+        :type => :boolean,
+        :aliases => '-v',
         :banner => "print version and exit"
 
     default_task :help
@@ -40,9 +40,9 @@ module Soca
       self.appdir      = options[:appdir] || File.expand_path(Dir.pwd)
       self.config_file = options[:config]
       self.debug       = options[:debug]
-      if options[:debug]
+      if debug
+        Soca.debug = true
         logger.level = Logger::DEBUG
-        options[:quiet] = false
       end
       self.source_paths << File.expand_path(File.join(File.dirname(__FILE__), 'templates'))
     end

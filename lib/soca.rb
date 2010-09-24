@@ -9,6 +9,10 @@ $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__))))
 module Soca
   VERSION = '0.1.0'
 
+  class << self
+    attr_accessor :debug
+  end
+
   def self.logger=(logger)
     @logger = logger
   end
