@@ -126,10 +126,14 @@ module Soca
       say pusher(env).json
     end
 
+    method_option '--compact', :type => :numeric, :default => 5,
+      :banner => 'run a compact operation every [n] pushes (default 5)'
     desc 'autopush [ENV]', 'watches the current directory for changes, building and pushing to couchdb'
     def autopush(env = 'default')
       push = pusher(env)
       files = {}
+      compact = options[:compact]
+      times = 0
       loop do
         changed = false
         Dir.glob(push.app_dir + '**/**') do |file|
@@ -142,8 +146,12 @@ module Soca
         end
 
         if changed
-          puts "Running push at #{Time.now}"
-          push.push!
+          say "Running push at #{Time.now}", :yellow
+          begin
+            push.push!
+          rescue => e
+            say "Error running push #{e}", :red
+          end
 
           Dir.glob(push.app_dir + '**/**') do |file|
             ctime = File.ctime(file).to_i
@@ -151,8 +159,13 @@ module Soca
               files[file] = ctime
             end
           end
-
-          puts "\nWaiting for a file change"
+          times += 1
+          if compact && times % compact == 0
+            say "pushed #{times} times, running a compact", :yellow
+            push.compact!
+          end
+          say "Waiting for a file change", :green
+          say "-------------------------"
         end
 
         sleep 1

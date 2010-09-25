@@ -42,6 +42,7 @@ Gem::Specification.new do |s|
      "lib/soca/templates/js/vendor/jquery-1.4.2.js",
      "lib/soca/templates/js/vendor/jquery.couch-0.11.js",
      "lib/soca/templates/js/vendor/sammy-0.6.1.js",
+     "lib/soca/templates/js/vendor/sammy.couch-0.1.0.js",
      "lib/soca/templates/js/vendor/sha1.js",
      "soca.gemspec",
      "test/helper.rb",

@@ -10,7 +10,7 @@ as a full interactive JavaScript application. couchapp's inherently have a
 a bunch of really cool features - easy replication and synchronization,
 instant access to store and fetch data from CouchDB, and a full JS API. [Sammy.js](http://code.quirkey.com/sammy) is a perfect fit for couchapps providing a simple programmable controller layer on top of CouchDB's data.
 
-I highly recommend reading the section on couchapps in the [CouchDB Book](http://couchdb.apache.org/relax).
+I highly recommend reading the section on couchapps in the [CouchDB Book](http://guide.couchdb.org/editions/1/en/standalone.html).
 
 *soca* is a simple command line tool written in ruby for building and pushing 
 couchapps. It is similar to and heavily inspired by the canonical couchapp
