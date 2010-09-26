@@ -183,6 +183,9 @@ module Soca
 
     def pusher(env)
       Soca::Pusher.new(appdir, env, config_file)
+    rescue => e
+      say e.message, :red
+      exit
     end
 
   end

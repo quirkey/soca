@@ -16,7 +16,11 @@ module Soca
     end
 
     def load_config
-      @config = JSON.parse(File.read(config_path))
+      if File.readable?(config_path)
+        @config = JSON.parse(File.read(config_path))
+      else
+        raise "Could not find config at '#{config_path}'. Run `soca init`"
+      end
     end
 
     def load_couchapprc
