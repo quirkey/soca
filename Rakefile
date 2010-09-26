@@ -7,13 +7,13 @@ begin
     gem.name = "soca"
     gem.version = Soca::VERSION
     gem.summary = %Q{Sammy on CouchApp}
-    gem.description = %Q{soca is a different way of writing apps for couchdb. The structure is up to you.}
+    gem.description = %Q{soca is a different way of writing apps for CouchDB. The structure is up to you.}
     gem.email = "aaron@quirkey.com"
     gem.homepage = "http://github.com/quirkey/soca"
     gem.authors = ["Aaron Quint"]
     gem.add_dependency 'json', '~>1.4.6'
     gem.add_dependency 'typhoeus', '~>0.1.31'
-    gem.add_dependency 'jim', '~>0.2.2'
+    gem.add_dependency 'jim', '~>0.2.3'
     gem.add_dependency 'compass', '~>0.10.5'
     gem.add_development_dependency "shoulda", ">= 0"
     gem.add_development_dependency "yard", ">= 0"
