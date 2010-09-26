@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["Aaron Quint"]
   s.date = %q{2010-09-26}
   s.default_executable = %q{soca}
-  s.description = %q{soca is a different way of writing apps for couchdb. The structure is up to you.}
+  s.description = %q{soca is a different way of writing apps for CouchDB. The structure is up to you.}
   s.email = %q{aaron@quirkey.com}
   s.executables = ["soca"]
   s.extra_rdoc_files = [
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     "HISTORY",
      "LICENSE",
      "README.md",
      "Rakefile",
