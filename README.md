@@ -36,7 +36,7 @@ places them in their expected JSON slot, you make a new sort of couchapp.
 Unlike a traditional couchapp, a soca couchapp is actually one way - you're 
 source directory is actually 'compiled' into its final state. This allows you
 to do things you couldnt before, including bundling js files, using external
-tools like [compass](http://compassstyle.org), and just generally following
+tools like [compass](http://compass-style.org), and just generally following
 your own preffered directory structure. This does mean that there is no `soca 
 clone` to get a couchapp out of CouchDB - though replicating works the same as 
 before (and is probably faster because you push only the docs you need or 
