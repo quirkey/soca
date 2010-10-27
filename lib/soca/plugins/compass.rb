@@ -8,7 +8,7 @@ module Soca
 
       name 'compass'
 
-      def run
+      def run(options = {})
         Soca.logger.info "compiling compass"
         compass_from = File.join(app_dir, 'sass')
         compass_to   = File.join(app_dir, 'css')

@@ -118,10 +118,10 @@ module Soca
       end
     end
 
-    def plugin(plugin_name)
+    def plugin(plugin_name, options = {})
       require "soca/plugins/#{plugin_name}"
       p = Soca::Plugin.plugins[plugin_name].new(self)
-      p.run
+      p.run(options)
     end
 
     private
