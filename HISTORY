@@ -1,3 +1,10 @@
+== 0.1.2 [10-26-10]
+
+- Added mustache plugin for interpolating env and config data into static HTML
+  before push
+- soca purge deletes the design doc
+- Upgraded sammy to 0.6.2
+
 == 0.1.1 [10-04-10]
 
 - Fixed compass url (poswald)
