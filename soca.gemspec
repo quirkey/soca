@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{soca}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
      "lib/soca/templates/js/app.js",
      "lib/soca/templates/js/vendor/jquery-1.4.2.js",
      "lib/soca/templates/js/vendor/jquery.couch-0.11.js",
-     "lib/soca/templates/js/vendor/sammy-0.6.1.js",
+     "lib/soca/templates/js/vendor/sammy-0.6.2.js",
      "lib/soca/templates/js/vendor/sammy.couch-0.1.0.js",
      "lib/soca/templates/js/vendor/sha1.js",
      "soca.gemspec",
@@ -88,6 +88,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<thor>, ["~> 0.14.0"])
       s.add_runtime_dependency(%q<jim>, ["~> 0.2.3"])
       s.add_runtime_dependency(%q<compass>, ["~> 0.10.5"])
+      s.add_runtime_dependency(%q<mustache>, ["~> 0.11.2"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
     else
@@ -97,6 +98,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<thor>, ["~> 0.14.0"])
       s.add_dependency(%q<jim>, ["~> 0.2.3"])
       s.add_dependency(%q<compass>, ["~> 0.10.5"])
+      s.add_dependency(%q<mustache>, ["~> 0.11.2"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
     end
@@ -107,6 +109,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<thor>, ["~> 0.14.0"])
     s.add_dependency(%q<jim>, ["~> 0.2.3"])
     s.add_dependency(%q<compass>, ["~> 0.10.5"])
+    s.add_dependency(%q<mustache>, ["~> 0.11.2"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
   end
