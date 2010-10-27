@@ -16,6 +16,7 @@ module Soca
           options = {:logger => ::Compass::NullLogger.new}
         end
         compass = ::Compass::Compiler.new(app_dir, compass_from, compass_to, ::Compass.sass_engine_options.merge(options || {}))
+        Soca.logger.debug "compass: #{compass.inspect}"
         compass.run
       end
 
