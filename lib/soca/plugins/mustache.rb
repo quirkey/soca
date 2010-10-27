@@ -17,8 +17,11 @@ module Soca
       def run(options = {})
         file_patterns = options[:files] || '*.mustache'
         files = Dir[*[file_patterns].flatten]
-        vars = {:env => pusher.env, :config => pusher.config}.merge(options[:vars])
-        Soca.logger.debug "Mustache vars: #{vars}"
+        vars = {
+          :env => pusher.env,
+          :config => pusher.config
+        }.merge(options[:vars] || {})
+        Soca.logger.debug "Mustache vars: #{vars.inspect}"
         files.each do |file|
           Soca.logger.debug "Running #{file} through mustache."
           basename = File.basename(file)
@@ -26,7 +29,7 @@ module Soca
           parts    = basename.split(/\./)
           new_file = parts.length > 2 ? parts[0..-2].join('.') : basename[0] + ".html"
           File.open(File.join(dir, new_file), 'w') do |f|
-            f << Mustache.render(File.read(file), vars)
+            f << ::Mustache.render(File.read(file), vars)
           end
           Soca.logger.debug "Wrote to #{new_file}"
         end

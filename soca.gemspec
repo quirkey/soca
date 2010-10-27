@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
      "lib/soca/plugin.rb",
      "lib/soca/plugins/compass.rb",
      "lib/soca/plugins/jim.rb",
+     "lib/soca/plugins/mustache.rb",
      "lib/soca/pusher.rb",
      "lib/soca/templates/Jimfile",
      "lib/soca/templates/config.js.erb",
