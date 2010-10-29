@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
-  s.date = %q{2010-10-26}
+  s.date = %q{2010-10-29}
   s.default_executable = %q{soca}
   s.description = %q{soca is a different way of writing apps for CouchDB. The structure is up to you.}
   s.email = %q{aaron@quirkey.com}
@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
      "lib/soca/templates/js/vendor/sammy-0.6.2.js",
      "lib/soca/templates/js/vendor/sammy.couch-0.1.0.js",
      "lib/soca/templates/js/vendor/sha1.js",
+     "lib/soca/templates/rewrites.js.erb",
      "soca.gemspec",
      "test/helper.rb",
      "test/test_soca_cli.rb",
@@ -63,6 +64,7 @@ Gem::Specification.new do |s|
      "test/testapp/js/vendor/json2.js",
      "test/testapp/js/vendor/sammy-0.5.4.js",
      "test/testapp/js/vendor/sammy.mustache-0.5.4.js",
+     "test/testapp/rewrites.js",
      "test/testapp/templates/index.mustache"
   ]
   s.homepage = %q{http://github.com/quirkey/soca}
