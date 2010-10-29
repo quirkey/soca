@@ -50,6 +50,11 @@ class TestSocaPusher < Test::Unit::TestCase
         assert_match(/function/, @app_file['views']['recent']['map'])
         assert @app_file['_attachments']['css/app.css']
       end
+      
+      should "include rewrites.js as json" do
+        assert @app_file['rewrites']
+        assert @app_file['rewrites'][0]['from']
+      end
     end
 
     context "push_url" do

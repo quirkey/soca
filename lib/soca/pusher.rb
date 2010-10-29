@@ -138,6 +138,8 @@ module Soca
       if base_path =~ /^_attachments/
         hash['_attachments'] ||= {}
         hash['_attachments'][base_path.gsub(/_attachments\//, '')] = make_attachment(path, file_data)
+      elsif base_path == 'rewrites.js'
+        hash['rewrites'] = JSON.parse(file_data)
       else
         parts = base_path.gsub(/^\//, '').gsub(/\.js$/, '').split('/')
         current_hash = hash

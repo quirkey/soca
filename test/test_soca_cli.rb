@@ -57,6 +57,10 @@ class TestSocaCLI < Test::Unit::TestCase
         assert_file(/\<html/, @new_app_dir, 'index.html')
       end
 
+      should "generate a rewrites.js file" do
+        assert_file(/from/,@new_app_dir,'rewrites.js')
+      end
+
       should "generate a css directory" do
         assert_directory(@new_app_dir, 'css')
       end

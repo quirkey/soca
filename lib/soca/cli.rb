@@ -79,6 +79,7 @@ module Soca
       directory('db')
       template('Jimfile')
       template('index.html.erb', 'index.html')
+      template('rewrites.js.erb', 'rewrites.js')
       @dir_mappings = {
         "config.js"  => "",
         "index.html" => "_attachments/index.html",
