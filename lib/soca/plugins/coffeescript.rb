@@ -15,7 +15,7 @@ module Soca
       #             `config` are interpolated.
       #
       def run(options = {})
-        file_patterns = options[:files] || '*.coffee'
+        file_patterns = options[:files] || '**/*.coffee'
         files = Dir[*[file_patterns].flatten]
         vars = {
           :env => pusher.env,
