@@ -27,7 +27,7 @@ module Soca
           basename = File.basename(file)
           dir      = File.dirname(file)
           parts    = basename.split(/\./)
-          new_file = parts.length > 2 ? parts[0..-2].join('.') : basename[0] + ".html"
+          new_file = parts.length > 2 ? parts[0..-2].join('.') : parts[0] + ".html"
           File.open(File.join(dir, new_file), 'w') do |f|
             f << ::Mustache.render(File.read(file), vars)
           end
