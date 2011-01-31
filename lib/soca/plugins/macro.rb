@@ -7,10 +7,16 @@ module Soca
             name 'macro'
 
             def run(options = {})
-              @pusher.document['views'].each do |view,code|
-                 puts code
-              end
+                @pusher.document['views'].each do |view,code|
+                    code['map'] = code['map'].split("\n").inject(" ") do |res,line|
+                        if line =~ /\/\/ !code (.*)/ 
+                            res+=File.read($1) 
+                        else
+                            res += line
+                        end
+                    end
+                end
             end
+        end
     end
- end
 end
