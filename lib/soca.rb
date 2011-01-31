@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'json'
 require 'typhoeus'
 require 'base64'
