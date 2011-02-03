@@ -10,9 +10,9 @@ module Soca
                 @pusher.document['views'].each do |view,code|
                     code['map'] = code['map'].split("\n").inject(" ") do |res,line|
                         if line =~ /\/\/ !code (.*)/ 
-                            res+=File.read($1) 
+                            res += "\n#{File.read($1)}\n"
                         else
-                            res += line
+                            res += "#{line}\n"
                         end
                     end
                 end
