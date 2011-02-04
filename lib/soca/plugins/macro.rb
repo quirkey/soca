@@ -8,7 +8,7 @@ module Soca
 
             def run(options = {})
                 @pusher.document['views'].each do |view,code|
-                 ['map','reduce'].each{|part| macro_expand_on(part,code)}              
+                 ['map','reduce'].each{|part| macro_expand_on(part,code) if code[part]}              
                 end
             end
 

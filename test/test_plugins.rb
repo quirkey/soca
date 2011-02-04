@@ -6,7 +6,7 @@ class TestSocaPusher < Test::Unit::TestCase
         setup do
             @pusher = Soca::Pusher.new(@test_app_dir)
             @sammy = File.read("#{@test_app_dir}/js/vendor/sammy-0.5.4.js")
-            @view = "#{@test_app_dir}/db/views/recent/"
+            @views = "#{@test_app_dir}/db/views/"
         end
 
         should "replace !code macros with file contents" do
@@ -16,10 +16,17 @@ class TestSocaPusher < Test::Unit::TestCase
 
         should "keep the original code" do
             @pusher.push!
-            parts = ['map','reduce'].inject({}){|res,part| res[part] = File.read("#{@view}/#{part}.js").split("\n");res}
+            parts = ['map','reduce'].inject({}){|res,part| res[part] = File.read("#{@views}/recent/#{part}.js").split("\n");res}
             parts.each do |part,lines|
-                contain_lines(part,lines)
+              assert contain_lines(part,lines)
             end
+        end
+
+        should "be able to process views with map only" do
+            @pusher.push!
+            lines  = File.read("#{@views}/only_map/map.js").split("\n")
+            assert contain_lines('map',lines)
+
         end
     end
 
