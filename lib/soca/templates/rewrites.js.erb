@@ -1,5 +1,5 @@
 /**
- * this file contains the json representation for rewrite rules 
+ * this file contains the json representation for rewrite rules
 **/
 [
   { // rewriting / to index.html
