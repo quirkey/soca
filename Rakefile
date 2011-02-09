@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
-require 'lib/soca'
+require 'soca'
 
 begin
   require 'jeweler'
@@ -48,7 +48,6 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
 
 task :default => :test
 
