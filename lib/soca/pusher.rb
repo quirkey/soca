@@ -129,6 +129,7 @@ module Soca
       file_data = File.read(path)
       base_path = path.gsub(app_dir, '')
       if map = mapped_directories.detect {|k,v| k =~ base_path }
+        logger.debug "Matched #{path} against #{map.inspect}"
         if map[1]
           base_path = base_path.gsub(map[0], map[1])
         else
