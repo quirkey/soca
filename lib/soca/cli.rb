@@ -39,7 +39,7 @@ module Soca
       end
       self.appdir      = options[:appdir] || File.expand_path(Dir.pwd)
       self.config_file = options[:config]
-      self.debug       = options[:debug]
+      self.debug       = self.class.debugging || options[:debug]
       if debug
         Soca.debug = true
         logger.level = Logger::DEBUG
