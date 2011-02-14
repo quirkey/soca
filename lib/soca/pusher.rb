@@ -177,7 +177,11 @@ module Soca
       logger.debug "PUT #{url}"
       logger.debug "body: #{body[0..80]} ..."
       response = Typhoeus::Request.put(url, :body => body)
-      logger.debug "Response: #{response.code} #{response.body[0..200]}"
+      if response.success? || response.code == 412
+        logger.debug "Response: #{response.code} #{response.body[0..200]}"
+      else
+        logger.error "Response: #{response.code} #{response.body[0..200]}"
+      end
       response
     end
 
