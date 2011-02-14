@@ -169,8 +169,7 @@ module Soca
 
     def mapped_directories
       return @mapped_directories if @mapped_directories
-      map = {}
-      config['mapDirectories'].collect {|k,v| map[/^#{k}/] = v }
+      map = config['mapDirectories'].collect {|k,v| [/^#{k}/, v] }
       @mapped_directories = map
     end
 
