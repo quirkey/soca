@@ -92,7 +92,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<jim>, ["~> 0.2.3"])
       s.add_runtime_dependency(%q<compass>, ["~> 0.10.5"])
       s.add_runtime_dependency(%q<mustache>, ["~> 0.11.2"])
-      s.add_runtime_dependency(%q<coffee-script>, ["~> 1.1.0"])
+      s.add_runtime_dependency(%q<coffee-script>, ["~> 2.1.2"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
     else
@@ -103,7 +103,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jim>, ["~> 0.2.3"])
       s.add_dependency(%q<compass>, ["~> 0.10.5"])
       s.add_dependency(%q<mustache>, ["~> 0.11.2"])
-      s.add_dependency(%q<coffee-script>, ["~> 1.1.0"])
+      s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
     end
@@ -115,7 +115,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jim>, ["~> 0.2.3"])
     s.add_dependency(%q<compass>, ["~> 0.10.5"])
     s.add_dependency(%q<mustache>, ["~> 0.11.2"])
-    s.add_dependency(%q<coffee-script>, ["~> 1.1.0"])
+    s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
   end
