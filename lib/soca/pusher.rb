@@ -129,6 +129,7 @@ module Soca
       file_data = File.read(path)
       base_path = path.gsub(app_dir, '')
       if map = mapped_directories.detect {|k,v| k =~ base_path }
+        logger.debug "Matched #{path} against #{map.inspect}"
         if map[1]
           base_path = base_path.gsub(map[0], map[1])
         else
@@ -168,8 +169,7 @@ module Soca
 
     def mapped_directories
       return @mapped_directories if @mapped_directories
-      map = {}
-      config['mapDirectories'].collect {|k,v| map[/^#{k}/] = v }
+      map = config['mapDirectories'].collect {|k,v| [/^#{k}/, v] }
       @mapped_directories = map
     end
 
@@ -177,7 +177,11 @@ module Soca
       logger.debug "PUT #{url}"
       logger.debug "body: #{body[0..80]} ..."
       response = Typhoeus::Request.put(url, :body => body)
-      logger.debug "Response: #{response.code} #{response.body[0..200]}"
+      if response.success? || response.code == 412
+        logger.debug "Response: #{response.code} #{response.body[0..200]}"
+      else
+        logger.error "Response: #{response.code} #{response.body[0..200]}"
+      end
       response
     end
 
