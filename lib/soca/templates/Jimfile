@@ -3,7 +3,7 @@
   "compressed_suffix": ".min",
   "vendor_dir": "js/vendor",
   "bundles": {
-    "bundle_name": [
+    "default": [
       "sha1",
       [ "jquery", "1.4.2" ],
       [ "jquery.couch", "0.11" ],
