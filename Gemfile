@@ -8,7 +8,7 @@ gem 'thor', '~>0.14.0'
 gem 'jim', '~>0.2.3'
 gem 'compass', '~>0.10.5'
 gem 'mustache', '~>0.11.2'
-gem 'coffee-script', '~> 1.1.0'
+gem 'coffee-script', '~> 2.1.2'
 group :development do
     gem 'rake'
     gem 'jeweler'
