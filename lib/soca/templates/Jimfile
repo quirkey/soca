@@ -1,12 +1,15 @@
-// bundled_path: js/default.js
-// compressed_path: js/production.js
-// vendor_dir: js/vendor
-
-/ start adding your requirements below:
-
-sha1
-jquery 1.4.2
-jquery.couch 0.11
-sammy 0.6.2
-sammy.couch 0.1.0
-js/app
+{
+  "bundle_dir": "js",
+  "compressed_suffix": ".min",
+  "vendor_dir": "js/vendor",
+  "bundles": {
+    "bundle_name": [
+      "sha1",
+      [ "jquery", "1.4.2" ],
+      [ "jquery.couch", "0.11" ],
+      [ "sammy", "0.6.3" ],
+      [ "sammy.couch", "0.1.0" ],
+      "js/app"
+    ]
+  }
+}
