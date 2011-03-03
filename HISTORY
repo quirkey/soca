@@ -1,3 +1,15 @@
+== 0.2.0 [03-02-11]
+
+- Allow rewrite rules to be pushed with rewrites.js
+- Upgrade to jim 0.3.1 and the new Jimfile format
+- Added CoffeScript plugin and tools (rmetzler and andrzejsliwa)
+- Added python CouchApp style macros (!json, !code, etc) in the macro plugin (narkisr)
+- Added proper mapping for `index.html` in `config.js` for the `test/testapp` (karmi)
+- Fix for Thor swallowing --debug option (candlerb)
+- Show path matching in debug output (candlerb)
+- Make mapped_directories an array, for processing in order on ruby 1.8 (candlerb)
+- Upgraded to Sammy 0.6.3
+
 == 0.1.2 [10-26-10]
 
 - Added mustache plugin for interpolating env and config data into static HTML
