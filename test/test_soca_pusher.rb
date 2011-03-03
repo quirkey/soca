@@ -29,7 +29,7 @@ class TestSocaPusher < Test::Unit::TestCase
       end
 
       should "run before build scripts" do
-        assert @app_file['_attachments']['js/bundled.js'], "bundled the js"
+        assert @app_file['_attachments']['js/default.js'], "bundled the js"
       end
 
       should "encode attachments" do
