@@ -31,8 +31,8 @@ GEM
       rake
       shoulda
       test-unit
-      thor
       thor (~> 0.14.4)
+      thor
       version_sorter (~> 1.1.0)
       version_sorter (~> 1.1.0)
       yajl-ruby
