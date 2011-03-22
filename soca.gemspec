@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{soca}
-  s.version = "0.1.2"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
-  s.date = %q{2011-02-24}
+  s.date = %q{2011-03-21}
   s.default_executable = %q{soca}
   s.description = %q{soca is a different way of writing apps for CouchDB. The structure is up to you.}
   s.email = %q{aaron@quirkey.com}
@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
     "lib/soca/templates/js/app.js",
     "lib/soca/templates/js/vendor/jquery-1.4.2.js",
     "lib/soca/templates/js/vendor/jquery.couch-0.11.js",
-    "lib/soca/templates/js/vendor/sammy-0.6.2.js",
+    "lib/soca/templates/js/vendor/sammy-0.6.3.js",
     "lib/soca/templates/js/vendor/sammy.couch-0.1.0.js",
     "lib/soca/templates/js/vendor/sha1.js",
     "lib/soca/templates/rewrites.js.erb",
@@ -66,7 +66,6 @@ Gem::Specification.new do |s|
     "test/testapp/hooks/before_push.rb",
     "test/testapp/index.html",
     "test/testapp/js/app.js",
-    "test/testapp/js/bundled.js",
     "test/testapp/js/default.js",
     "test/testapp/js/vendor/jquery-1.4.2.js",
     "test/testapp/js/vendor/json2.js",
@@ -77,7 +76,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = %q{http://github.com/quirkey/soca}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.0}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Sammy on CouchApp}
   s.test_files = [
     "test/helper.rb",
@@ -89,14 +88,15 @@ Gem::Specification.new do |s|
   ]
 
   if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<json>, ["~> 1.4.6"])
       s.add_runtime_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.1.31"])
+      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.2"])
       s.add_runtime_dependency(%q<thor>, ["~> 0.14.0"])
-      s.add_runtime_dependency(%q<jim>, ["~> 0.2.3"])
+      s.add_runtime_dependency(%q<jim>, ["~> 0.3.1"])
       s.add_runtime_dependency(%q<compass>, ["~> 0.10.5"])
       s.add_runtime_dependency(%q<mustache>, ["~> 0.11.2"])
       s.add_runtime_dependency(%q<coffee-script>, ["~> 2.1.2"])
@@ -106,9 +106,9 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_runtime_dependency(%q<json>, ["~> 1.4.6"])
       s.add_runtime_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.1.31"])
+      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.2"])
       s.add_runtime_dependency(%q<thor>, ["~> 0.14.0"])
-      s.add_runtime_dependency(%q<jim>, ["~> 0.2.3"])
+      s.add_runtime_dependency(%q<jim>, ["~> 0.3.1"])
       s.add_runtime_dependency(%q<compass>, ["~> 0.10.5"])
       s.add_runtime_dependency(%q<mustache>, ["~> 0.11.2"])
       s.add_runtime_dependency(%q<coffee-script>, ["~> 2.1.2"])
@@ -117,9 +117,9 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<json>, ["~> 1.4.6"])
       s.add_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_dependency(%q<typhoeus>, ["~> 0.1.31"])
+      s.add_dependency(%q<typhoeus>, ["~> 0.2"])
       s.add_dependency(%q<thor>, ["~> 0.14.0"])
-      s.add_dependency(%q<jim>, ["~> 0.2.3"])
+      s.add_dependency(%q<jim>, ["~> 0.3.1"])
       s.add_dependency(%q<compass>, ["~> 0.10.5"])
       s.add_dependency(%q<mustache>, ["~> 0.11.2"])
       s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])
@@ -129,9 +129,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<json>, ["~> 1.4.6"])
       s.add_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_dependency(%q<typhoeus>, ["~> 0.1.31"])
+      s.add_dependency(%q<typhoeus>, ["~> 0.2"])
       s.add_dependency(%q<thor>, ["~> 0.14.0"])
-      s.add_dependency(%q<jim>, ["~> 0.2.3"])
+      s.add_dependency(%q<jim>, ["~> 0.3.1"])
       s.add_dependency(%q<compass>, ["~> 0.10.5"])
       s.add_dependency(%q<mustache>, ["~> 0.11.2"])
       s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])
@@ -141,9 +141,9 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<json>, ["~> 1.4.6"])
     s.add_dependency(%q<mime-types>, ["~> 1.16"])
-    s.add_dependency(%q<typhoeus>, ["~> 0.1.31"])
+    s.add_dependency(%q<typhoeus>, ["~> 0.2"])
     s.add_dependency(%q<thor>, ["~> 0.14.0"])
-    s.add_dependency(%q<jim>, ["~> 0.2.3"])
+    s.add_dependency(%q<jim>, ["~> 0.3.1"])
     s.add_dependency(%q<compass>, ["~> 0.10.5"])
     s.add_dependency(%q<mustache>, ["~> 0.11.2"])
     s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])
@@ -153,9 +153,9 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<json>, ["~> 1.4.6"])
     s.add_dependency(%q<mime-types>, ["~> 1.16"])
-    s.add_dependency(%q<typhoeus>, ["~> 0.1.31"])
+    s.add_dependency(%q<typhoeus>, ["~> 0.2"])
     s.add_dependency(%q<thor>, ["~> 0.14.0"])
-    s.add_dependency(%q<jim>, ["~> 0.2.3"])
+    s.add_dependency(%q<jim>, ["~> 0.3.1"])
     s.add_dependency(%q<compass>, ["~> 0.10.5"])
     s.add_dependency(%q<mustache>, ["~> 0.11.2"])
     s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])

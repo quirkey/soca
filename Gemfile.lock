@@ -14,7 +14,7 @@ GEM
     fssm (0.2.5)
     git (1.2.5)
     haml (3.0.25)
-    jeweler (1.5.1)
+    jeweler (1.5.2)
       bundler (~> 1.0.0)
       git (>= 1.2.5)
       rake
@@ -31,8 +31,8 @@ GEM
       rake
       shoulda
       test-unit
-      thor
       thor (~> 0.14.4)
+      thor
       version_sorter (~> 1.1.0)
       version_sorter (~> 1.1.0)
       yajl-ruby
