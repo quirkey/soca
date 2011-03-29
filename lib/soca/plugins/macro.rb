@@ -18,7 +18,7 @@ module Soca
                 else
                  res += "#{line}\n"
                 end
-              end
+              end.strip
             end
         end
     end
