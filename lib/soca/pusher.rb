@@ -56,7 +56,7 @@ module Soca
 
     def push_url
       raise "no app id specified in config" unless config['id']
-      "#{db_url}/_design/#{config['id']}"
+      config['not_design'] ? "#{db_url}/#{config['id']}" : "#{db_url}/_design/#{config['id']}"
     end
 
     def app_url
