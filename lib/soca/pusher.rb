@@ -126,7 +126,7 @@ module Soca
 
     private
     def map_file(path, hash)
-      file_data = File.read(path)
+      file_data = File.binread(path)
       base_path = path.gsub(app_dir, '')
       if map = mapped_directories.detect {|k,v| k =~ base_path }
         logger.debug "Matched #{path} against #{map.inspect}"
