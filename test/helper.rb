@@ -2,10 +2,12 @@ require 'rubygems'
 require 'test/unit'
 require 'shoulda'
 require 'mocha'
+require 'compass'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'soca'
+require 'soca/plugins/compass'
 
 class Test::Unit::TestCase
 
