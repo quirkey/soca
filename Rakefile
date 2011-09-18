@@ -15,7 +15,7 @@ begin
     gem.authors = ["Aaron Quint"]
     gem.add_dependency 'json', '~>1.4.6'
     gem.add_dependency 'mime-types', '~>1.16'
-    gem.add_dependency 'typhoeus', '~>0.2'
+    gem.add_dependency 'typhoeus', '~>0.2.4'
     gem.add_dependency 'thor', '~>0.14.0'
     gem.add_dependency 'jim', '~>0.3.1'
     gem.add_dependency 'compass', '~>0.10.5'
