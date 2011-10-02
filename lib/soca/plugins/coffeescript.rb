@@ -14,7 +14,7 @@ module Soca
       # * :vars - Additional variables to interpolate. By default the `env` and
       #             `config` are interpolated.
       #
-      def run(options = {})
+      def before_build
         file_patterns = options[:files] || '**/*.coffee'
         files = Dir[*[file_patterns].flatten]
         vars = {

@@ -1,6 +1,7 @@
 module Soca
   class Plugin
     attr_reader :pusher
+    attr_accessor :options
 
     def self.name(plugin_name)
       @@plugins ||= {}
@@ -11,8 +12,9 @@ module Soca
       @@plugins ||= {}
     end
 
-    def initialize(pusher)
+    def initialize(pusher, options = {})
       @pusher = pusher
+      @options = options
     end
 
     def logger

@@ -7,16 +7,17 @@ module Soca
 
       name 'macro'
 
-      def run(options = {})
+      def before_push
         @pusher.document['views'].each do |view,code|
           ['map','reduce'].each{|part| macro_expand_on(part,code) if code[part]}
         end
       end
 
+      private
       def macro_expand_on(part,code)
        code[part] = code[part].split("\n").inject(" ") do |res,line|
           if line =~ /\/\/ !code (.*)/
-           res += "\n#{File.read($1)}\n"
+           res += "\n#{File.read(File.join(pusher.app_dir, $1))}\n"
           else
            res += "#{line}\n"
           end

@@ -6,7 +6,7 @@ module Soca
 
       name 'jim'
 
-      def run(options = {})
+      def before_build
         jimfile = File.join(app_dir, 'Jimfile')
         ::Jim.logger = logger
         logger.debug "bundling js"
