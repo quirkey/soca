@@ -1,1 +1,1 @@
-plugin 'jim'
+config["arbitrary_setting"] = "test"

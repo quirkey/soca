@@ -15,10 +15,6 @@ module Soca
       @pusher = pusher
     end
 
-    def run(options = {})
-      raise "you need to subclass plugin and provide your own logic, please"
-    end
-
     def logger
       Soca.logger
     end
