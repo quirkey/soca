@@ -12,7 +12,6 @@ gem 'coffee-script', '~> 2.1.2'
 group :development do
     gem 'rake'
     gem 'jeweler'
-    gem "yard", ">= 0"
 end
 group :test do
     gem "shoulda", ">= 0"
