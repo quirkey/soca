@@ -18,9 +18,9 @@ begin
     gem.add_dependency 'typhoeus', '~>0.2.4'
     gem.add_dependency 'thor', '~>0.14.0'
     gem.add_dependency 'jim', '~>0.3.1'
-    gem.add_dependency 'compass', '~>0.10.5'
-    gem.add_dependency 'mustache', '~>0.11.2'
-    gem.add_dependency 'coffee-script', '~> 2.1.2'
+    gem.add_dependency 'compass', '~>0.12'
+    gem.add_dependency 'mustache', '~>0.99'
+    gem.add_dependency 'coffee-script', '~> 2.2'
     gem.add_development_dependency "shoulda", ">= 0"
     gem.add_development_dependency "yard", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
