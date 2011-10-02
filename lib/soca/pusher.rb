@@ -137,7 +137,9 @@ module Soca
         @plugins = config['plugins'].map do |plugin_config|
           plugin_name, plugin_options = [plugin_config].flatten
           require "soca/plugins/#{plugin_name}"
-          [plugin_name, Soca::Plugin.plugins[plugin_name].new(self, plugin_options || {})]
+          plugin_options ||= {}
+          plugin_options.each {|k, v| plugin_options[k.to_sym] = v }
+          [plugin_name, Soca::Plugin.plugins[plugin_name].new(self, plugin_options)]
         end
       else
         @plugins = []
