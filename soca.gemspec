@@ -52,7 +52,7 @@ Gem::Specification.new do |s|
     "lib/soca/templates/rewrites.js.erb",
     "soca.gemspec",
     "test/helper.rb",
-    "test/test_plugins.rb",
+    #"test/test_plugins.rb",
     "test/test_soca_cli.rb",
     "test/test_soca_pusher.rb",
     "test/testapp/.couchapprc",
@@ -80,7 +80,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Sammy on CouchApp}
   s.test_files = [
     "test/helper.rb",
-    "test/test_plugins.rb",
+    #"test/test_plugins.rb",
     "test/test_soca_cli.rb",
     "test/test_soca_pusher.rb",
     "test/testapp/hooks/before_build.rb",
