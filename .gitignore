@@ -20,3 +20,4 @@ rdoc
 pkg
 
 ## PROJECT::SPECIFIC
+*.gem
