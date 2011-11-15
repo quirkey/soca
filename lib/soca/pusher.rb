@@ -45,7 +45,7 @@ module Soca
     end
 
     def db_url
-      if env =~ /^http\:\/\// # the env is actual a db_url
+      if env =~ /^https?\:\/\// # the env is actual a db_url
         env
       else
         env_config = config['couchapprc']['env'][env]
@@ -147,7 +147,11 @@ module Soca
         while !parts.empty?
           part = parts.shift
           if parts.empty?
-            current_hash[part] = file_data
+            if part =~ /.json$/
+              current_hash[part.gsub(/.json$/, '')] = JSON.parse(file_data)
+            else
+              current_hash[part] = file_data
+            end
           else
             current_hash[part] ||= {}
             current_hash = current_hash[part]
