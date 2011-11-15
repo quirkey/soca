@@ -147,7 +147,11 @@ module Soca
         while !parts.empty?
           part = parts.shift
           if parts.empty?
-            current_hash[part] = file_data
+            if part =~ /.json$/
+              current_hash[part.gsub(/.json$/, '')] = JSON.parse(file_data)
+            else
+              current_hash[part] = file_data
+            end
           else
             current_hash[part] ||= {}
             current_hash = current_hash[part]
