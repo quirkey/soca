@@ -45,7 +45,7 @@ module Soca
     end
 
     def db_url
-      if env =~ /^http\:\/\// # the env is actual a db_url
+      if env =~ /^https?\:\/\// # the env is actual a db_url
         env
       else
         env_config = config['couchapprc']['env'][env]
