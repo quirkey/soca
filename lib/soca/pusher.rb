@@ -30,13 +30,13 @@ module Soca
 
     def build
       @document = {}
-      run_hook_file!(:before_build)
+      run_hooks!(:before_build)
       logger.debug "building app JSON"
       Dir.glob(app_dir + '**/**') do |path|
         next if File.directory?(path)
         @document = map_file(path, @document)
       end
-      run_hook_file!(:after_build)
+      run_hooks!(:after_build)
       @document
     end
 
@@ -81,13 +81,13 @@ module Soca
     def push!
       create_db!
       build
-      run_hook_file!(:before_push)
+      run_hooks!(:before_push)
       get_current_revision
       document['_rev'] = revision if revision
       post_body = JSON.generate(document)
       logger.debug "pushing document to #{push_url}"
       put!(push_url, post_body)
-      run_hook_file!(:after_push)
+      run_hooks!(:after_push)
     end
 
     def purge!
@@ -107,6 +107,11 @@ module Soca
       Soca.logger
     end
 
+    def run_hooks!(hook)
+      run_hook_file!(hook)
+      run_plugin_hooks!(hook)
+    end
+
     def run_hook_file!(hook)
       hook_file_path = File.join(app_dir, 'hooks', "#{hook}.rb")
       if File.readable? hook_file_path
@@ -118,10 +123,28 @@ module Soca
       end
     end
 
-    def plugin(plugin_name, options = {})
-      require "soca/plugins/#{plugin_name}"
-      p = Soca::Plugin.plugins[plugin_name].new(self)
-      p.run(options)
+    def run_plugin_hooks!(hook)
+      plugins.each do |plugin_name, plugin|
+        if plugin.respond_to?(hook)
+          plugin.send(hook)
+        end
+      end
+    end
+
+    def plugins
+      return @plugins if @plugins
+      if config['plugins']
+        @plugins = config['plugins'].map do |plugin_config|
+          plugin_name, plugin_options = [plugin_config].flatten
+          require "soca/plugins/#{plugin_name}"
+          plugin_options ||= {}
+          plugin_options.each {|k, v| plugin_options[k.to_sym] = v }
+          [plugin_name, Soca::Plugin.plugins[plugin_name].new(self, plugin_options)]
+        end
+      else
+        @plugins = []
+      end
+      @plugins
     end
 
     private

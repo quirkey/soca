@@ -14,7 +14,7 @@ module Soca
       # * :vars - Additional variables to interpolate. By default the `env` and
       #             `config` are interpolated.
       #
-      def run(options = {})
+      def before_build
         file_patterns = options[:files] || '**/*.coffee'
         files = Dir[*[file_patterns].flatten]
         vars = {
@@ -30,11 +30,11 @@ module Soca
           parts    = basename.split(/\./)
           new_file = (parts.length > 2 ? parts[0..-2].join('.') : parts[0]) + ".js"
 
-          File.open(File.join(dir, new_file), 'w') do |f|
+          output_dir = options[:output_dir] || dir
+          File.open(File.join(output_dir, new_file), 'w') do |f|
             f << ::CoffeeScript.compile(File.read(file), vars)
           end
           Soca.logger.debug "Wrote to #{new_file}"
-
         end
       end
 

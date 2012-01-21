@@ -11,9 +11,9 @@ gem 'mustache', '~>0.99'
 gem 'coffee-script', '~>2.2'
 
 group :development do
-    gem 'rake'
-    gem 'jeweler'
+  gem 'rake'
+  gem 'jeweler'
 end
 group :test do
-    gem "shoulda", ">= 0"
+  gem "shoulda", ">= 0"
 end

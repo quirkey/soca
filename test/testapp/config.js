@@ -8,5 +8,9 @@
     "templates": "_attachments/templates",
     "db": "",
     "config.js": ""
-  }
+  },
+  "plugins": [
+    "macro",
+    "jim"
+  ]
 }

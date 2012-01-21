@@ -21,6 +21,8 @@ class TestSocaPusher < Test::Unit::TestCase
 
     context "build" do
       setup do
+        js_path = File.join(@test_app_dir, 'js', 'default.js')
+        File.unlink(js_path) if File.readable?(js_path)
         @app_file = @push.build
       end
 
@@ -55,6 +57,11 @@ class TestSocaPusher < Test::Unit::TestCase
         assert @app_file['rewrites']
         assert @app_file['rewrites'][0]['from']
       end
+
+      should "run hooks with arbitrary info" do
+        assert_equal "test", @push.config["arbitrary_setting"]
+      end
+
     end
 
     context "push_url" do
@@ -69,12 +76,19 @@ class TestSocaPusher < Test::Unit::TestCase
     end
 
     context "push" do
-      should "create the db and push" do
+      setup do
+        @push.push!
+      end
+
+      before_should "create the db and push" do
         put_response = Typhoeus::Response.new(:code => 201, :headers => "", :body => '{"ok":"true"}')
         Typhoeus::Request.expects(:put).twice.returns(put_response)
         get_response = Typhoeus::Response.new(:code => 200, :headers => "", :body => '{"_id":"_design/test_app", "_rev": "2"}')
         Typhoeus::Request.expects(:get).returns(get_response)
-        @push.push!
+      end
+
+      should "run hooks" do
+        assert_equal "test", @push.config["before_push_setting"]
       end
 
     end
