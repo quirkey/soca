@@ -4,15 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{soca}
-  s.version = "0.2.0"
+  s.name = "soca"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
-  s.date = %q{2011-03-21}
-  s.default_executable = %q{soca}
-  s.description = %q{soca is a different way of writing apps for CouchDB. The structure is up to you.}
-  s.email = %q{aaron@quirkey.com}
+  s.date = "2012-01-21"
+  s.description = "soca is a different way of writing apps for CouchDB. The structure is up to you."
+  s.email = "aaron@quirkey.com"
   s.executables = ["soca"]
   s.extra_rdoc_files = [
     "LICENSE",
@@ -32,6 +31,7 @@ Gem::Specification.new do |s|
     "lib/soca/plugin.rb",
     "lib/soca/plugins/coffeescript.rb",
     "lib/soca/plugins/compass.rb",
+    "lib/soca/plugins/haml.rb",
     "lib/soca/plugins/jim.rb",
     "lib/soca/plugins/macro.rb",
     "lib/soca/plugins/mustache.rb",
@@ -52,7 +52,8 @@ Gem::Specification.new do |s|
     "lib/soca/templates/rewrites.js.erb",
     "soca.gemspec",
     "test/helper.rb",
-    "test/test_plugins.rb",
+    "test/test_compass_plugin.rb",
+    "test/test_macro_plugin.rb",
     "test/test_soca_cli.rb",
     "test/test_soca_pusher.rb",
     "test/testapp/.couchapprc",
@@ -74,91 +75,76 @@ Gem::Specification.new do |s|
     "test/testapp/rewrites.js",
     "test/testapp/templates/index.mustache"
   ]
-  s.homepage = %q{http://github.com/quirkey/soca}
+  s.homepage = "http://github.com/quirkey/soca"
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Sammy on CouchApp}
-  s.test_files = [
-    "test/helper.rb",
-    "test/test_plugins.rb",
-    "test/test_soca_cli.rb",
-    "test/test_soca_pusher.rb",
-    "test/testapp/hooks/before_build.rb",
-    "test/testapp/hooks/before_push.rb"
-  ]
+  s.rubygems_version = "1.8.10"
+  s.summary = "Sammy on CouchApp"
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<json>, ["~> 1.4.6"])
       s.add_runtime_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.2"])
+      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.2.4"])
       s.add_runtime_dependency(%q<thor>, ["~> 0.14.0"])
       s.add_runtime_dependency(%q<jim>, ["~> 0.3.1"])
-      s.add_runtime_dependency(%q<compass>, ["~> 0.10.5"])
-      s.add_runtime_dependency(%q<mustache>, ["~> 0.11.2"])
-      s.add_runtime_dependency(%q<coffee-script>, ["~> 2.1.2"])
+      s.add_runtime_dependency(%q<compass>, ["~> 0.11"])
+      s.add_runtime_dependency(%q<mustache>, ["~> 0.99"])
+      s.add_runtime_dependency(%q<coffee-script>, ["~> 2.2"])
       s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_development_dependency(%q<shoulda>, [">= 0"])
-      s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_runtime_dependency(%q<json>, ["~> 1.4.6"])
       s.add_runtime_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.2"])
+      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.2.4"])
       s.add_runtime_dependency(%q<thor>, ["~> 0.14.0"])
       s.add_runtime_dependency(%q<jim>, ["~> 0.3.1"])
-      s.add_runtime_dependency(%q<compass>, ["~> 0.10.5"])
-      s.add_runtime_dependency(%q<mustache>, ["~> 0.11.2"])
-      s.add_runtime_dependency(%q<coffee-script>, ["~> 2.1.2"])
+      s.add_runtime_dependency(%q<compass>, ["~> 0.12"])
+      s.add_runtime_dependency(%q<mustache>, ["~> 0.99"])
+      s.add_runtime_dependency(%q<coffee-script>, ["~> 2.2"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
     else
       s.add_dependency(%q<json>, ["~> 1.4.6"])
       s.add_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_dependency(%q<typhoeus>, ["~> 0.2"])
+      s.add_dependency(%q<typhoeus>, ["~> 0.2.4"])
       s.add_dependency(%q<thor>, ["~> 0.14.0"])
       s.add_dependency(%q<jim>, ["~> 0.3.1"])
-      s.add_dependency(%q<compass>, ["~> 0.10.5"])
-      s.add_dependency(%q<mustache>, ["~> 0.11.2"])
-      s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])
+      s.add_dependency(%q<compass>, ["~> 0.11"])
+      s.add_dependency(%q<mustache>, ["~> 0.99"])
+      s.add_dependency(%q<coffee-script>, ["~> 2.2"])
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<shoulda>, [">= 0"])
-      s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<json>, ["~> 1.4.6"])
       s.add_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_dependency(%q<typhoeus>, ["~> 0.2"])
+      s.add_dependency(%q<typhoeus>, ["~> 0.2.4"])
       s.add_dependency(%q<thor>, ["~> 0.14.0"])
       s.add_dependency(%q<jim>, ["~> 0.3.1"])
-      s.add_dependency(%q<compass>, ["~> 0.10.5"])
-      s.add_dependency(%q<mustache>, ["~> 0.11.2"])
-      s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])
+      s.add_dependency(%q<compass>, ["~> 0.12"])
+      s.add_dependency(%q<mustache>, ["~> 0.99"])
+      s.add_dependency(%q<coffee-script>, ["~> 2.2"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
     end
   else
     s.add_dependency(%q<json>, ["~> 1.4.6"])
     s.add_dependency(%q<mime-types>, ["~> 1.16"])
-    s.add_dependency(%q<typhoeus>, ["~> 0.2"])
+    s.add_dependency(%q<typhoeus>, ["~> 0.2.4"])
     s.add_dependency(%q<thor>, ["~> 0.14.0"])
     s.add_dependency(%q<jim>, ["~> 0.3.1"])
-    s.add_dependency(%q<compass>, ["~> 0.10.5"])
-    s.add_dependency(%q<mustache>, ["~> 0.11.2"])
-    s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])
+    s.add_dependency(%q<compass>, ["~> 0.11"])
+    s.add_dependency(%q<mustache>, ["~> 0.99"])
+    s.add_dependency(%q<coffee-script>, ["~> 2.2"])
     s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<shoulda>, [">= 0"])
-    s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<json>, ["~> 1.4.6"])
     s.add_dependency(%q<mime-types>, ["~> 1.16"])
-    s.add_dependency(%q<typhoeus>, ["~> 0.2"])
+    s.add_dependency(%q<typhoeus>, ["~> 0.2.4"])
     s.add_dependency(%q<thor>, ["~> 0.14.0"])
     s.add_dependency(%q<jim>, ["~> 0.3.1"])
-    s.add_dependency(%q<compass>, ["~> 0.10.5"])
-    s.add_dependency(%q<mustache>, ["~> 0.11.2"])
-    s.add_dependency(%q<coffee-script>, ["~> 2.1.2"])
+    s.add_dependency(%q<compass>, ["~> 0.12"])
+    s.add_dependency(%q<mustache>, ["~> 0.99"])
+    s.add_dependency(%q<coffee-script>, ["~> 2.2"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
   end
