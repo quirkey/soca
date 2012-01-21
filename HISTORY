@@ -1,3 +1,19 @@
+== 0.3.0 [01-21-12]
+
+* Big release with a lot of breaking changes
+
+- New plugin architecture: Instead of including plugins in hooks, plugins define their own hook methods like `before_build`.
+  See: https://github.com/quirkey/soca/tree/master/lib/soca/plugin
+  Plugins are then activated/included by creating an array of ordered plugins in the config.json
+  See: https://github.com/quirkey/soca/blob/master/test/testapp/config.js#L12
+- New HAML plugin [ Eric Wollesen ]
+- Write json-files as json into the document [ Niko Uphoff ]
+- Allow https in env db_url [Alexis Hildebrandt]
+- Optionally configure sass and css directories in compass plugin [ Neal Clark ]
+- Macro should play nice with built-in reduce functions [ Gabor Ratky ]
+- added a new flag to config.js called {"not_design": true} to allow non-design documents to be autopushed. [Kevin Malakoff]
+- Read files in using binread rather than read.  Otherwise binary attachments such as images get totally screwed. [Pete Bacon Darwin]
+
 == 0.2.0 [03-02-11]
 
 - Allow rewrite rules to be pushed with rewrites.js

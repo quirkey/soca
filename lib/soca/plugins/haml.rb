@@ -6,14 +6,11 @@ module Soca
 
       name 'haml'
 
-      def run(options={})
-        @options = options
-
+      def before_build
         Dir[File.join(haml_from, "**/*.haml")].each do |file|
           Soca.logger.debug "Running #{file} through Haml."
           basename = File.basename(file, ".haml")
-          dir      = File.dirname(file).sub(/^#{haml_from}/,
-                                            haml_to)
+          dir      = File.dirname(file).sub(/^#{haml_from}/, haml_to)
           new_file = basename + ".html"
           FileUtils.mkdir_p(dir) unless File.exists?(dir)
 
@@ -26,11 +23,11 @@ module Soca
 
       private
       def haml_from
-        @options.has_key?(:from) ? File.join(app_dir, @options[:from]) : File.join(app_dir, 'haml')
+        options.has_key?(:from) ? File.join(app_dir, options[:from]) : File.join(app_dir, 'haml')
       end
 
       def haml_to
-        @options.has_key?(:to) ? File.join(app_dir, @options[:to]) : File.join(app_dir, '')
+        options.has_key?(:to) ? File.join(app_dir, options[:to]) : File.join(app_dir, '')
       end
 
     end
