@@ -14,6 +14,7 @@ group :development do
   gem 'rake'
   gem 'jeweler'
 end
+
 group :test do
   gem "shoulda", ">= 0"
 end

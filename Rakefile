@@ -13,16 +13,6 @@ begin
     gem.email = "aaron@quirkey.com"
     gem.homepage = "http://github.com/quirkey/soca"
     gem.authors = ["Aaron Quint"]
-    gem.add_dependency 'json', '~>1.4.6'
-    gem.add_dependency 'mime-types', '~>1.16'
-    gem.add_dependency 'typhoeus', '~>0.2.4'
-    gem.add_dependency 'thor', '~>0.14.0'
-    gem.add_dependency 'jim', '~>0.3.1'
-    gem.add_dependency 'compass', '~>0.12'
-    gem.add_dependency 'mustache', '~>0.99'
-    gem.add_dependency 'coffee-script', '~> 2.2'
-    gem.add_development_dependency "shoulda", ">= 0"
-    gem.add_development_dependency "yard", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
