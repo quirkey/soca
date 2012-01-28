@@ -26,6 +26,7 @@ module Soca
     def load_couchapprc
       @config ||= {}
       @config['couchapprc'] = JSON.parse(File.read(File.join(app_dir, '.couchapprc')))
+      run_hooks!(:after_load_couchapprc)
     end
 
     def build

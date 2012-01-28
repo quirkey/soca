@@ -18,3 +18,7 @@ end
 group :test do
   gem "shoulda", ">= 0"
 end
+
+group :darwin do
+  gem 'keychain_services', '~>0.1.1'
+end
