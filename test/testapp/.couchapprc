@@ -5,6 +5,9 @@
     },
     "production": {
       "db": "http://admin:admin@c.ixxr.net/testapp"
+    },
+    "keychain_credentials": {
+      "db": "http://KEYCHAIN_CREDENTIALS@localhost:5984/testapp"
     }
   }
 }
