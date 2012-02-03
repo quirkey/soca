@@ -25,5 +25,9 @@ module Soca
       pusher.app_dir
     end
 
+    def config
+      pusher.config
+    end
+
   end
 end

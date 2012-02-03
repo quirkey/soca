@@ -8,6 +8,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'soca'
 require 'soca/plugins/compass'
+require 'soca/plugins/credentials'
 
 class Test::Unit::TestCase
 
