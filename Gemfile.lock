@@ -43,6 +43,7 @@ GEM
       yajl-ruby
       yajl-ruby
     json (1.4.6)
+    keychain_services (0.1.1)
     leftright (0.9.1)
     metaclass (0.0.1)
     mime-types (1.16)
@@ -74,6 +75,7 @@ DEPENDENCIES
   jeweler
   jim (~> 0.3.1)
   json (~> 1.4.6)
+  keychain_services (~> 0.1.1)
   mime-types (~> 1.16)
   mustache (~> 0.99)
   rake
