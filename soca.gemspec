@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "soca"
-  s.version = "0.3.1"
+  s.version = "0.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
-  s.date = "2012-01-23"
+  s.date = "2012-02-04"
   s.description = "soca is a different way of writing apps for CouchDB. The structure is up to you."
   s.email = "aaron@quirkey.com"
   s.executables = ["soca"]
@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
     "lib/soca/plugin.rb",
     "lib/soca/plugins/coffeescript.rb",
     "lib/soca/plugins/compass.rb",
+    "lib/soca/plugins/credentials.rb",
     "lib/soca/plugins/haml.rb",
     "lib/soca/plugins/jim.rb",
     "lib/soca/plugins/macro.rb",
@@ -44,15 +45,16 @@ Gem::Specification.new do |s|
     "lib/soca/templates/hooks/before_build.rb",
     "lib/soca/templates/index.html.erb",
     "lib/soca/templates/js/app.js",
-    "lib/soca/templates/js/vendor/jquery-1.4.2.js",
+    "lib/soca/templates/js/vendor/jquery-1.7.1.js",
     "lib/soca/templates/js/vendor/jquery.couch-0.11.js",
-    "lib/soca/templates/js/vendor/sammy-0.6.3.js",
+    "lib/soca/templates/js/vendor/sammy-0.7.1.js",
     "lib/soca/templates/js/vendor/sammy.couch-0.1.0.js",
     "lib/soca/templates/js/vendor/sha1.js",
     "lib/soca/templates/rewrites.js.erb",
     "soca.gemspec",
     "test/helper.rb",
     "test/test_compass_plugin.rb",
+    "test/test_credentials_plugin.rb",
     "test/test_macro_plugin.rb",
     "test/test_soca_cli.rb",
     "test/test_soca_pusher.rb",
