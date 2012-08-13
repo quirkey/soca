@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "soca"
-  s.version = "0.3.2"
+  s.version = "0.3.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
@@ -88,7 +88,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<json>, ["~> 1.4.6"])
       s.add_runtime_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.2.4"])
+      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.3.0"])
       s.add_runtime_dependency(%q<thor>, ["~> 0.15"])
       s.add_runtime_dependency(%q<jim>, ["~> 0.3"])
       s.add_runtime_dependency(%q<compass>, ["~> 0.11"])
@@ -99,7 +99,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<json>, ["~> 1.4.6"])
       s.add_dependency(%q<mime-types>, ["~> 1.16"])
-      s.add_dependency(%q<typhoeus>, ["~> 0.2.4"])
+      s.add_dependency(%q<typhoeus>, ["~> 0.3.0"])
       s.add_dependency(%q<thor>, ["~> 0.15"])
       s.add_dependency(%q<jim>, ["~> 0.3"])
       s.add_dependency(%q<compass>, ["~> 0.11"])
@@ -111,7 +111,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<json>, ["~> 1.4.6"])
     s.add_dependency(%q<mime-types>, ["~> 1.16"])
-    s.add_dependency(%q<typhoeus>, ["~> 0.2.4"])
+    s.add_dependency(%q<typhoeus>, ["~> 0.3.0"])
     s.add_dependency(%q<thor>, ["~> 0.15"])
     s.add_dependency(%q<jim>, ["~> 0.3"])
     s.add_dependency(%q<compass>, ["~> 0.11"])
