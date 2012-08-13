@@ -63,8 +63,7 @@ GEM
     shoulda-matchers (1.2.0)
       activesupport (>= 3.0.0)
     thor (0.15.4)
-    typhoeus (0.2.4)
-      mime-types
+    typhoeus (0.3.3)
       mime-types
     version_sorter (1.1.0)
     yajl-ruby (1.1.0)
@@ -85,4 +84,4 @@ DEPENDENCIES
   rake
   shoulda
   thor (~> 0.15)
-  typhoeus (~> 0.2.4)
+  typhoeus (~> 0.3.0)

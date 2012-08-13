@@ -20,3 +20,5 @@ rdoc
 pkg
 
 ## PROJECT::SPECIFIC
+bin/
+.bundle

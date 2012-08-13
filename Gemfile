@@ -3,7 +3,7 @@ source "http://rubygems.org"
 
 gem 'json', '~>1.4.6'
 gem 'mime-types', '~>1.16'
-gem 'typhoeus', '~>0.2.4'
+gem 'typhoeus', '~>0.3.0'
 gem 'thor', '~>0.15'
 gem 'jim', '~>0.3'
 gem 'compass', '~>0.11'

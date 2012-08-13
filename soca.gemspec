@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
-  s.date = "2012-02-04"
+  s.date = "2012-08-13"
   s.description = "soca is a different way of writing apps for CouchDB. The structure is up to you."
   s.email = "aaron@quirkey.com"
   s.executables = ["soca"]
@@ -79,7 +79,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/quirkey/soca"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.24"
   s.summary = "Sammy on CouchApp"
 
   if s.respond_to? :specification_version then
@@ -89,8 +89,8 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<json>, ["~> 1.4.6"])
       s.add_runtime_dependency(%q<mime-types>, ["~> 1.16"])
       s.add_runtime_dependency(%q<typhoeus>, ["~> 0.2.4"])
-      s.add_runtime_dependency(%q<thor>, ["~> 0.14.0"])
-      s.add_runtime_dependency(%q<jim>, ["~> 0.3.1"])
+      s.add_runtime_dependency(%q<thor>, ["~> 0.15"])
+      s.add_runtime_dependency(%q<jim>, ["~> 0.3"])
       s.add_runtime_dependency(%q<compass>, ["~> 0.11"])
       s.add_runtime_dependency(%q<mustache>, ["~> 0.99"])
       s.add_runtime_dependency(%q<coffee-script>, ["~> 2.2"])
@@ -100,8 +100,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<json>, ["~> 1.4.6"])
       s.add_dependency(%q<mime-types>, ["~> 1.16"])
       s.add_dependency(%q<typhoeus>, ["~> 0.2.4"])
-      s.add_dependency(%q<thor>, ["~> 0.14.0"])
-      s.add_dependency(%q<jim>, ["~> 0.3.1"])
+      s.add_dependency(%q<thor>, ["~> 0.15"])
+      s.add_dependency(%q<jim>, ["~> 0.3"])
       s.add_dependency(%q<compass>, ["~> 0.11"])
       s.add_dependency(%q<mustache>, ["~> 0.99"])
       s.add_dependency(%q<coffee-script>, ["~> 2.2"])
@@ -112,8 +112,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<json>, ["~> 1.4.6"])
     s.add_dependency(%q<mime-types>, ["~> 1.16"])
     s.add_dependency(%q<typhoeus>, ["~> 0.2.4"])
-    s.add_dependency(%q<thor>, ["~> 0.14.0"])
-    s.add_dependency(%q<jim>, ["~> 0.3.1"])
+    s.add_dependency(%q<thor>, ["~> 0.15"])
+    s.add_dependency(%q<jim>, ["~> 0.3"])
     s.add_dependency(%q<compass>, ["~> 0.11"])
     s.add_dependency(%q<mustache>, ["~> 0.99"])
     s.add_dependency(%q<coffee-script>, ["~> 2.2"])
