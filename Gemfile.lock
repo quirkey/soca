@@ -34,7 +34,7 @@ GEM
       thor (~> 0.15)
       version_sorter (~> 1.1.0)
       yajl-ruby
-    json (1.4.6)
+    json (1.7.5)
     keychain_services (0.1.1)
     listen (0.4.7)
       rb-fchange (~> 0.0.5)
@@ -76,7 +76,7 @@ DEPENDENCIES
   compass (~> 0.11)
   jeweler
   jim (~> 0.3)
-  json (~> 1.4.6)
+  json (~> 1.7.5)
   keychain_services (~> 0.1.1)
   mime-types (~> 1.16)
   mocha
