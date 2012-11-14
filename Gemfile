@@ -1,7 +1,7 @@
 # A sample Gemfile
 source "http://rubygems.org"
 
-gem 'json', '~>1.4.6'
+gem 'json', '~>1.7.5'
 gem 'mime-types', '~>1.16'
 gem 'typhoeus', '~>0.3.0'
 gem 'thor', '~>0.15'
