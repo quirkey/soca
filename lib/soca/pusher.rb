@@ -139,7 +139,7 @@ module Soca
           plugin_name, plugin_options = [plugin_config].flatten
           require "soca/plugins/#{plugin_name}"
           plugin_options ||= {}
-          plugin_options.each {|k, v| plugin_options[k.to_sym] = v }
+          plugin_options.dup.each {|k, v| plugin_options[k.to_sym] = v }
           [plugin_name, Soca::Plugin.plugins[plugin_name].new(self, plugin_options)]
         end
       else
